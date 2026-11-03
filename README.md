@@ -58,10 +58,10 @@ Each script states its usage in its first lines. The order is:
 Notes:
 
 - Some scripts still contain the absolute input and output paths of the original workstation. Set these to your local folders before running.
-- The stored files in `results/` let you check the reported numbers without refitting. For example, running `compare.py` on `results/forward_model_folds` reproduces the following study-grouped numbers:
-  - CS RMSE 2.75 MPa and ln k RMSE 0.308 with three nearest trial batches;
-  - the independent-GP values;
-  - the matched-subset values.
+- `results/` holds the outputs of the reported runs, so the numbers can be checked without refitting. For example, run `audit_mtind.py` on the fold files in `results/forward_model_folds`, then `compare.py` with `results/forward_model_folds/lab_effect` as the legacy folder. This reproduces the study-grouped numbers below. These were checked on 2026-11-03.
+  - CS RMSE 2.753 MPa and ln k RMSE 0.308 with the three nearest trial batches;
+  - the independent-GP values (2.821 and 0.302);
+  - the matched-subset values (2.79-2.84 MPa).
 
 ## Data
 
