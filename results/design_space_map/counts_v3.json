@@ -1,0 +1,52 @@
+{
+ "note": "targets supported at R_LCB95 >= 0.90 (920 targets: 46 strengths x 20 permeabilities). Interior cells rest on the acceptance rule (min over 11 blends of R_LCB95 >= 0.902, GPU, N=4096); the edge cells (top supported cell and the first unsupported cell of each K* column) were additionally certified strictly (frozen estimator, 2 replicates, nominal and worst shift, porosity SD 1.5).",
+ "supported_cells": 386,
+ "supported_final_cells": 389,
+ "data_backed_cells": 154,
+ "n_targets": 920,
+ "strict_edge_check": {
+  "demoted": 0,
+  "promoted": 3,
+  "columns_certified": 20,
+  "final_with_strict_edge": 389
+ },
+ "per_round_newly_supported": [
+  10
+ ],
+ "refinement_stopped": null,
+ "monotone_fix": {
+  "supported": 386,
+  "violations": 0
+ },
+ "monotonic": {
+  "acceptance_rule": {
+   "n_supported": 386,
+   "n_violations": 0,
+   "violations": []
+  },
+  "final": {
+   "n_supported": 389,
+   "n_violations": 0,
+   "violations": []
+  }
+ },
+ "pool_size": {
+  "total": 42049,
+  "by_source": {
+   "old_anchor": 19143,
+   "old_refined": 529,
+   "old_sobol": 19888,
+   "old_tuned": 183,
+   "refined": 309,
+   "six": 1997
+  }
+ },
+ "best_design_source_among_supported": {
+  "old_anchor": 81,
+  "old_refined": 24,
+  "old_sobol": 46,
+  "old_tuned": 9,
+  "refined": 136,
+  "six": 90
+ }
+}

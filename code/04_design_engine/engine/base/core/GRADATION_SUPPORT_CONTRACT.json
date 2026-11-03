@@ -1,0 +1,17 @@
+{
+  "contract_version": "1.1.0-guided",
+  "enabled": true,
+  "epsilon_percentile": 95,
+  "epsilon_95": 0.1014295831693331,
+  "epsilon_90": 0.0748735532460601,
+  "epsilon_99": 0.18725597645182326,
+  "n_unique_gradations": 83,
+  "w_log": [
+    0.3465735902799727,
+    0.3465735902799727,
+    0.342589505455384,
+    0.3465735902799727,
+    0.49094400717998443
+  ],
+  "note": "Hard support gate: violation=max(0,W1min-eps)/eps, zero inside. eps = percentile of LEAVE-ONE-BLEND-OUT nearest-neighbour W1 over the unique recorded blends (data-only; no study labels). GuidedEngine phase 1: replaces the buggy 0.2233 (NaN study labels)."
+}

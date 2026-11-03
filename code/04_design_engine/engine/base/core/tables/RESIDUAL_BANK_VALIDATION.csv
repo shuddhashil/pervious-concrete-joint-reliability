@@ -1,0 +1,9 @@
+check,result,detail
+join_zero_unmatched,True,
+mu_exact_match,True,max_diff=0.0
+n_cal_627,True,
+n_studies_35,True,
+T_reconstruction_exact,True,
+quantile_reproduction_p0.8,True,"{""q"": 0.9238984622539608, ""k"": 503, ""expected_q"": 0.9238984622539607, ""exact"": true}"
+quantile_reproduction_p0.9,True,"{""q"": 1.2780800269806012, ""k"": 566, ""expected_q"": 1.2780800269806012, ""exact"": true}"
+quantile_reproduction_p0.95,True,"{""q"": 1.7051726081592478, ""k"": 597, ""expected_q"": 1.7051726081592478, ""exact"": true}"

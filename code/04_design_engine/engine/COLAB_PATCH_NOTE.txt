@@ -1,0 +1,5 @@
+Colab kit (built 2026-10-05) = the GuidedEngine_20261003 folder plus three changes, nothing else:
+1. gengine/global_search.py DEFAULT: t_lshade 14.0 -> 1.0e9, t_polish 6.0 -> 1.0e9, cool_s 10.0 -> 0.0 (search stops by max_gens=80 / patience=40 / steps_max=30 only; the wall-clock caps no longer cut runs).
+2. gengine/common.py cool_down(): returns 0.0 immediately (heat pause disabled; Colab protects its own GPU).
+3. gengine/target.py manifest(): the manifest-text hash uses CRLF (b'\r\n') instead of os.linesep so the Windows-made integrity hashes verify on Linux. File contents unchanged.
+Not included: targets/ (created fresh per target), logs, support-map folders, old reports.

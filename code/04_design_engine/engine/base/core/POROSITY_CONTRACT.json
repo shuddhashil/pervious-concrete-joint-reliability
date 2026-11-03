@@ -1,0 +1,17 @@
+{
+  "contract_version": "1.0.0",
+  "deployment_domain_pp": [20.0, 30.0],
+  "support_model_threshold": 0.25,
+  "guaranteed_tolerance_delta_pp": [0.0, 1.0, 2.0],
+  "porosity_sweep_step_pp": 0.25,
+  "baseline_porosity_sd_pp": 1.0,
+  "baseline_porosity_bias_pp": 0.0,
+  "semantics": {
+    "nominal_design_porosity": "designer-selected target used as the inverse-design coordinate",
+    "achieved_porosity": "nominal_design_porosity plus truncated-normal residual scatter",
+    "delta": "deterministic compaction-control tolerance evaluated at nominal minus, centre, and nominal plus delta",
+    "eps_phi": "residual within-batch achieved-porosity scatter; it is not an additional delta term"
+  },
+  "support_threshold_source": "STATE_SUPPORT_CONTRACT.json / frozen OCSVM+KDE threshold; copied here for post-run analyses",
+  "limitation": "Training data contain measured hardened porosity, not target-versus-achieved pairs; baseline 1.0 percentage point remains an engineering prior unless replicate evidence clearly supports another value."
+}

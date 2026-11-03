@@ -1,0 +1,223 @@
+{
+  "contract_version": "2.1.0",
+  "run_id": "Stage1_1813_90_Robust_20260915/run_04",
+  "supersedes": "Stage1_1813_90_Robust_20260915/run_02 (contract_version 2.0.0) -- SAME magnitudes for every parameter; run_04 fixes an implementation gap only (see implementation_note below and RUN04_PROBLEM_AUDIT.md Defect A). Ultimately traces back to run_01 (invalid: reused user's discarded experimental porosity variability).",
+  "implementation_note": "run_02/run_03 declared sand_mass.active_in_baseline=true but the code never sampled it (S_actual was held at nominal unconditionally). run_04 repairs the implementation to match this contract exactly -- no magnitude below changed. See research/Stage1_1813_90_Robust_20260915/run_04/RUN04_PROBLEM_AUDIT.md Defect A and tests/test_sand_uncertainty.py.",
+  "user_experimental_variability_used": false,
+  "user_experimental_variability_note": "All prior user experimental results (first paper, ID-80/ID-90 specimens, replicate SDs) are deliberately excluded by study design. No numerical value in this contract is derived from them.",
+  "targets": {
+    "strength_mpa": 18.0,
+    "permeability_mm_s": 13.0,
+    "required_joint_reliability": 0.9
+  },
+  "reliability_acceptance_statistic": "one_sided_95pct_lower_confidence_bound",
+  "gradation_mode": "A_lab_blended_bins",
+  "parameters": {
+    "achieved_porosity": {
+      "symbol": "eps_phi",
+      "form": "phi_actual = phi_nominal + eps_phi",
+      "distribution": "truncated_normal",
+      "baseline": {
+        "mean_pp": 0.0,
+        "sd_pp": 1.0,
+        "truncation_rule": "+/-3*sd_pp"
+      },
+      "sensitivity_sd_pp": [
+        0.5,
+        1.0,
+        1.5,
+        2.0
+      ],
+      "sensitivity_bias_pp": [
+        -1.0,
+        0.0,
+        1.0
+      ],
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Rounded, conservative literature-informed prior. Order-of-magnitude support: Crouch et al. (ASTM STP, 2012) repeated pervious-concrete fresh-void testing, void-content CVs ~1.1-3.6% across mixes (sub-1pp scatter at ~20-25% void levels, not several pp); external controlled-compaction studies (e.g. Mitrosz et al., Sci Rep 2025) showing porosity sensitivity to vibration/compaction of order fractions of a pp per unit change in compaction condition.",
+      "source_status_note": "NOT a measured project-specific or published universal batch-to-batch SD. No defensible universal published batch-to-batch SD for hardened pervious-concrete porosity exists; 1.0pp is a rounded engineering prior constructed conservatively from external evidence only.",
+      "double_counting_notes": "Represents residual achieved-porosity uncertainty from unresolved placement/compaction/material-state effects. Do NOT add a second independent compaction random variable or porosity-measurement-error term on top of this in the baseline run (Sections E7/E8)."
+    },
+    "cement_mass": {
+      "symbol": "delta_C",
+      "form": "C_actual = C_nominal * (1 + delta_C)",
+      "distribution": "truncated_normal_multiplicative",
+      "baseline": {
+        "mean": 0.0,
+        "sd": 0.0033,
+        "bounds": [
+          -0.01,
+          0.01
+        ]
+      },
+      "sensitivity": {
+        "sd": 0.0067,
+        "bounds": [
+          -0.02,
+          0.02
+        ]
+      },
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Conservative process envelope informed by concrete batching-scale accuracy guidance (NRMCA/ASTM C94-class scale-accuracy criteria); not itself a standard-prescribed stochastic SD.",
+      "double_counting_notes": "w/c is always DERIVED from perturbed C_actual and W_actual; never sampled independently."
+    },
+    "added_water": {
+      "symbol": "delta_W",
+      "form": "W_nominal = wc_nominal * C_nominal; W_actual = W_nominal * (1 + delta_W)",
+      "distribution": "truncated_normal_multiplicative",
+      "baseline": {
+        "mean": 0.0,
+        "sd": 0.005,
+        "bounds": [
+          -0.015,
+          0.015
+        ]
+      },
+      "sensitivity": {
+        "sd": 0.01,
+        "bounds": [
+          -0.03,
+          0.03
+        ]
+      },
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Conservative process envelope informed by water-meter/batching accuracy guidance.",
+      "double_counting_notes": "wc_actual = W_actual / C_actual recomputed AFTER cement and water perturbation; w/c is never independently randomized. Residual aggregate free-moisture impact is folded into the wide (+/-3%) sensitivity scenario rather than given its own baseline distribution -- no repeated project moisture data exist (data gap; recommend ASTM C566/C127-style measurement before physical batching)."
+    },
+    "aggregate_bin_masses": {
+      "symbol": "delta_Ai",
+      "form": "A_i_actual = A_i_nominal * (1 + delta_Ai), per separately batched bin; A_CA_actual = sum_i A_i_actual; g_i_actual = A_i_actual / A_CA_actual",
+      "distribution": "truncated_normal_multiplicative_independent_per_bin",
+      "baseline": {
+        "mean": 0.0,
+        "sd": 0.0033,
+        "bounds": [
+          -0.01,
+          0.01
+        ]
+      },
+      "sensitivity": {
+        "sd": 0.0067,
+        "bounds": [
+          -0.02,
+          0.02
+        ]
+      },
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Conservative process envelope informed by aggregate-scale weighing accuracy guidance.",
+      "double_counting_notes": "Realised gradation fractions are DERIVED from perturbed bin masses; no second independent fraction noise is added on top (would double count weighing error and can violate simplex closure)."
+    },
+    "sand_mass": {
+      "symbol": "delta_S",
+      "form": "S_actual = S_nominal * (1 + delta_S) if S_nominal > 0 else 0",
+      "distribution": "truncated_normal_multiplicative_conditional",
+      "baseline": {
+        "mean": 0.0,
+        "sd": 0.0033,
+        "bounds": [
+          -0.01,
+          0.01
+        ]
+      },
+      "sensitivity": {
+        "sd": 0.0067,
+        "bounds": [
+          -0.02,
+          0.02
+        ]
+      },
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Same batching-accuracy envelope as aggregate_bin_masses.",
+      "double_counting_notes": "If nominal sand is exactly 0, S_actual is held EXACTLY 0 (no noise-created material)."
+    },
+    "superplasticizer": {
+      "symbol": "delta_SP",
+      "form": "SP_actual = SP_nominal * (1 + delta_SP) if SP_nominal > 0 else 0",
+      "distribution": "truncated_normal_multiplicative_conditional",
+      "baseline": {
+        "mean": 0.0,
+        "sd": 0.01,
+        "bounds": [
+          -0.03,
+          0.03
+        ]
+      },
+      "sensitivity": {
+        "sd": 0.0167,
+        "bounds": [
+          -0.05,
+          0.05
+        ]
+      },
+      "active_in_baseline": true,
+      "sensitivity_only": false,
+      "source_type": "engineering_prior",
+      "source_citation": "Conservative process envelope informed by admixture-dispenser accuracy guidance.",
+      "double_counting_notes": "If nominal SP == 0, SP_actual is held EXACTLY 0 in every scenario draw."
+    },
+    "gradation_stockpile_mode_B": {
+      "symbol": "g_actual_mode_B",
+      "form": "logistic-normal in ALR coordinates, sensitivity-only fallback ~1pp SD per major fraction capped ~3pp (stress ~2pp capped ~5pp), closure preserved",
+      "active_in_baseline": false,
+      "sensitivity_only": true,
+      "source_type": "engineering_prior",
+      "source_citation": "Numerical fallback envelope, not fitted to repeated project sieve data.",
+      "double_counting_notes": "Not used for the primary 90% reliability claim; mode A (bin-mass-derived) is the active baseline."
+    },
+    "compaction": {
+      "symbol": "compaction_effect",
+      "form": "no independent compaction random variable in baseline; represented through achieved_porosity",
+      "active_in_baseline": false,
+      "sensitivity_only": true,
+      "source_type": "engineering_prior",
+      "source_citation": "No validated mapping from compaction effort to model inputs exists for this project.",
+      "double_counting_notes": "Introducing a second independent compaction variable alongside the full achieved-porosity term would double count the same physical mechanism (Section E7)."
+    },
+    "porosity_measurement_error": {
+      "symbol": "eps_phi_measurement",
+      "form": "observation-layer only; NOT added to latent true porosity used in the manufacturing reliability calculation",
+      "active_in_baseline": false,
+      "sensitivity_only": true,
+      "source_type": "engineering_prior",
+      "source_citation": "Reserved for future laboratory validation planning (Section E8).",
+      "double_counting_notes": "Must not be double-counted into the robust search; discussed only, never sampled here."
+    },
+    "strength_permeability_measurement_error": {
+      "symbol": "eps_meas_extra",
+      "form": "additional optimiser noise = 0 when paired predictive-residual sampling is active",
+      "active_in_baseline": false,
+      "sensitivity_only": true,
+      "source_type": "engineering_prior",
+      "source_citation": "Paired cross-fitted out-of-sample residuals (repeated random row splits, same-row excluded) already combine modelling, between-study and observation variability.",
+      "double_counting_notes": "Adding a separate generic measurement CV on top of the paired residual distribution would double count."
+    }
+  },
+  "correlations": {
+    "baseline": "all manufacturing perturbations independent EXCEPT physically-derived relationships (w/c derived from C,W; total CA and gradation derived from bin masses; zero-dose components stay exactly zero)",
+    "limitation": "No fitted project-specific batching/process correlation matrix exists; real correlations may be present and are not modelled here."
+  },
+  "reliability_mode": "paired_residual_mc",
+  "reliability_mode_notes": "Signed paired residuals resampled directly from tables/paired_residual_bank.csv (see PAIRED_RESIDUAL_BANK_AUDIT.md). The historical q90 lower-bound screen is retained ONLY as a diagnostic/reference column, never combined multiplicatively with manufacturing pass rate, and never applied inside the same scenario as a paired residual draw (that would double-count predictive/model error).",
+  "model_contract_hashes": {
+    "oracle_pt_sha256": "8b5dafe7327947b43df53558ca5307e4da33ea4f50138f9592d411bccb928bf3",
+    "joint_bundle_json_sha256": "0fafb24fd639928f351e45a439f847b656c30a4d21011e312e812029bdfedd4e"
+  },
+  "paired_residual_bank": {
+    "path": "tables/paired_residual_bank.csv",
+    "sha256": "91060622ee90201d4f45a1dc5a6baf90f059b3d503493107bdfdc07ea37917d2",
+    "n_cal": 631,
+    "n_studies": 35,
+    "note": "variant P (RobustnessTests_20261021)"
+  },
+  "generated_target_contract": "TARGET_CONTRACT.json is authoritative for this run"
+}

@@ -1,0 +1,27 @@
+{
+ "mode": "A3-1",
+ "model_loaded_from": "fulldata_Q5a3.pt",
+ "saved_state_sha256": "a53e5544f69933acd8e0e15b0faa368973f509eba8d720bbe61cc828de593a8b",
+ "oos_standardization_invariant_err": 0.0,
+ "tau_AD": 2.0881464191960895,
+ "support": {
+  "nu": 0.01,
+  "bandwidth": 0.5455594781168519,
+  "scale": 0.08051696446897331,
+  "train_mean": 0.5868775157245244,
+  "train_min": 0.3140102899264871,
+  "train_frac_ge_025": 1.0
+ },
+ "frame_lineage_checked": true,
+ "joint_q": {
+  "0.8": 0.9238984622539607,
+  "0.9": 1.2780800269806012,
+  "0.95": 1.7051726081592478
+ },
+ "oracle_sha256": "1303530f6cd29825d5198cda7943ad6808298edb7f06c2d70bb4b157f2e02bbd",
+ "support_pkl_sha256": "bb171d5292ee372a39c0856b76b78ce702f0d0e75fb4476a66822f73edaab134",
+ "bank_sha256": "6c3b5a2db575b18e155ed8aec421158cea683faa7d6c98ae3e4f287e1a02a281",
+ "n_cal": 627,
+ "n_studies": 35,
+ "minutes": 0.05
+}

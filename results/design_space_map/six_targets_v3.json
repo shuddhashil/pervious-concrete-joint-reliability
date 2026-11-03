@@ -1,0 +1,234 @@
+{
+ "engine_verdict_source": "the six target-specific engine runs: certified for 10/8, 14/6, 16/10, 20/4; not certified for 18/13 and 25/13",
+ "rule": "map 'inside' = some supported grid cell has S >= S_target and K >= K_target (monotone region); 'outside' = none. Nearest cells = the four grid cells around the target (floor/ceil S x floor/ceil K); when the target lies on a grid strength the two S cells are that cell and the next one up.",
+ "targets": [
+  {
+   "S_target": 10.0,
+   "K_target": 8.0,
+   "engine_verdict": "certified",
+   "map_verdict": "inside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 36,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 10.0,
+     "K_star": 6.6376,
+     "best_LB": 0.99537,
+     "supported_final": true
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 10.0,
+     "K_star": 8.2338,
+     "best_LB": 0.99291,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 11.0,
+     "K_star": 6.6376,
+     "best_LB": 0.98991,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 11.0,
+     "K_star": 8.2338,
+     "best_LB": 0.98139,
+     "supported_final": true
+    }
+   ]
+  },
+  {
+   "S_target": 14.0,
+   "K_target": 6.0,
+   "engine_verdict": "certified",
+   "map_verdict": "inside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 33,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 14.0,
+     "K_star": 5.3509,
+     "best_LB": 0.99318,
+     "supported_final": true
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 14.0,
+     "K_star": 6.6376,
+     "best_LB": 0.98506,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 15.0,
+     "K_star": 5.3509,
+     "best_LB": 0.98822,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 15.0,
+     "K_star": 6.6376,
+     "best_LB": 0.98228,
+     "supported_final": true
+    }
+   ]
+  },
+  {
+   "S_target": 16.0,
+   "K_target": 10.0,
+   "engine_verdict": "certified",
+   "map_verdict": "inside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 7,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 16.0,
+     "K_star": 8.2338,
+     "best_LB": 0.97011,
+     "supported_final": true
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 16.0,
+     "K_star": 10.2138,
+     "best_LB": 0.96377,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 17.0,
+     "K_star": 8.2338,
+     "best_LB": 0.96761,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 17.0,
+     "K_star": 10.2138,
+     "best_LB": 0.95968,
+     "supported_final": true
+    }
+   ]
+  },
+  {
+   "S_target": 20.0,
+   "K_target": 4.0,
+   "engine_verdict": "certified",
+   "map_verdict": "inside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 27,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 20.0,
+     "K_star": 3.4774,
+     "best_LB": 0.98402,
+     "supported_final": true
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 20.0,
+     "K_star": 4.3136,
+     "best_LB": 0.9821,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 21.0,
+     "K_star": 3.4774,
+     "best_LB": 0.98179,
+     "supported_final": true
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 21.0,
+     "K_star": 4.3136,
+     "best_LB": 0.98144,
+     "supported_final": true
+    }
+   ]
+  },
+  {
+   "S_target": 18.0,
+   "K_target": 13.0,
+   "engine_verdict": "not certified",
+   "map_verdict": "outside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 0,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 18.0,
+     "K_star": 12.6699,
+     "best_LB": 0.89938,
+     "supported_final": false
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 18.0,
+     "K_star": 15.7167,
+     "best_LB": 0.79903,
+     "supported_final": false
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 19.0,
+     "K_star": 12.6699,
+     "best_LB": 0.87232,
+     "supported_final": false
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 19.0,
+     "K_star": 15.7167,
+     "best_LB": 0.78112,
+     "supported_final": false
+    }
+   ]
+  },
+  {
+   "S_target": 25.0,
+   "K_target": 13.0,
+   "engine_verdict": "not certified",
+   "map_verdict": "outside",
+   "flag": "AGREES",
+   "n_supported_cells_at_or_above": 0,
+   "nearest_cells": [
+    {
+     "role": "S_lo/K_lo",
+     "S_star": 25.0,
+     "K_star": 12.6699,
+     "best_LB": null,
+     "supported_final": false
+    },
+    {
+     "role": "S_lo/K_hi",
+     "S_star": 25.0,
+     "K_star": 15.7167,
+     "best_LB": null,
+     "supported_final": false
+    },
+    {
+     "role": "S_hi/K_lo",
+     "S_star": 26.0,
+     "K_star": 12.6699,
+     "best_LB": null,
+     "supported_final": false
+    },
+    {
+     "role": "S_hi/K_hi",
+     "S_star": 26.0,
+     "K_star": 15.7167,
+     "best_LB": null,
+     "supported_final": false
+    }
+   ]
+  }
+ ]
+}

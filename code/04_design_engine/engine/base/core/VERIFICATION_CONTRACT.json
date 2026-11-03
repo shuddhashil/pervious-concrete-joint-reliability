@@ -1,0 +1,28 @@
+{
+  "contract_version": "5.0.0",
+  "run_id": "runs/Stage1_Automated_20261001_211150/run_01",
+  "supersedes": "run_04/VERIFICATION_CONTRACT.json (contract_version 4.1.0) -- same architecture and same 100,000-replicate stabilized bootstrap standard, applied from the START (run_04 learned this lesson mid-run; run_05 adopts it as frozen from the outset, per RUN04_PROBLEM_AUDIT/BOOTSTRAP_STABILIZATION_NOTE).",
+  "purpose": "Decisive independent final verification for (a) continuous frontier candidates located in SEARCH_CONTRACT.json Phases A-C, and (b) the 1 kg/m3 integer cement profile in Phase D.",
+  "acceptance_statistic": "one_sided_95pct_lower_confidence_bound",
+  "acceptance_rule": "R_LCB95 >= 0.9 for targets strength >= 18.0 MPa and permeability >= 13.0 mm/s",
+  "r_lcb95_definition": "min(mc_wilson_lower_95, calib_bootstrap_R_LCB95): Wilson one-sided 95% lower bound for Monte-Carlo sampling error at the tested N (primary point estimator: one paired residual draw per manufacturing scenario, row-weighted over the 650-row bank -- STATISTICAL_ESTIMAND.md, unchanged from run_04); 5th percentile of the CORRECTED 36-source-study cluster bootstrap (src/cluster_bootstrap.py, unchanged) at the STABILIZED replicate count below.",
+  "minimum_n_scenarios": 20000,
+  "production_bootstrap_reps": 100000,
+  "bootstrap_rep_count_note": "run_04 discovered that 500 replicates gives a cluster-bootstrap 5th-percentile estimate with cross-seed sd~0.0014 for a near-boundary candidate -- enough to flip a PASS/FAIL decision on a small margin (BOOTSTRAP_STABILIZATION_NOTE.md). run_05 uses 100,000 replicates (cross-seed sd~0.00006-0.00009) for EVERY decisive candidate from the start -- no separate 500-replicate first pass is run in this run.",
+  "escalation_rule": {
+    "step_1": "N=20000, 100000 bootstrap reps.",
+    "step_2_condition": "abs(R_LCB95 - 0.9) <= 0.005 at step 1",
+    "step_2": "N=50000, 100000 bootstrap reps, NEW manufacturing seed.",
+    "step_3_condition": "abs(R_LCB95 - 0.9) <= 0.002 at step 2 AND the pass/fail decision could still flip",
+    "step_3": "N=100000, 100000 bootstrap reps (hard cap on scenarios; bootstrap-rep count already at its production standard), NEW manufacturing seed.",
+    "seeds": "each escalation step uses a NEW seed, independent of every search-stage seed in SEARCH_CONTRACT.json and every other decisive candidate's seed."
+  },
+  "efficiency_requirement": "The expensive forward-model pass (mu_S, mu_logQ, s_S, s_logQ, support) is computed EXACTLY ONCE per (candidate, n_scenarios) pair, chunked into batches of 10,000 rows per src/efficient_verification.py's PREDICT_CHUNK_SIZE (run_04 OOM fix, PREDICTION_CHUNKING_NOTE.md, reused unchanged) to avoid the frozen model's O(N^2) memory blowup at N>=50,000. The cluster-bootstrap per-residual-row pass probability is computed exactly once per (candidate, n_scenarios) pair; all 100,000 bootstrap replicates reuse it via O(36)-per-replicate reweighting (src/cluster_bootstrap.py, unchanged).",
+  "paired_residuals": "strength and log-permeability residuals are always drawn as a PAIRED row from tables/paired_residual_bank.csv, never independently.",
+  "support_failures_count_as_joint_failures": true,
+  "reporting_precision": "Rhat and R_LCB95 reported to 3 decimal places in manuscript-facing prose; full machine precision retained in CSV/JSON. Cement reported at 1 kg/m3 engineering resolution in the final headline result; the continuous frontier is reported without fabricated sub-kg/m3 precision.",
+  "independence_from_search": "Every scenario/residual/bootstrap seed used in decisive verification (base 960000 series, see below) is disjoint from every search-stage seed in SEARCH_CONTRACT.json (205609151, 205609201, 205609301, 205609401).",
+  "decisive_verification_seed_base_scheme": "seed_base = 1000000 + SHA-256(stable candidate ID) modulo a 63-bit reserved range. Candidate IDs are required and recorded in each trace. Before a run, the driver fails closed if its base matches a trace for another ID; the 201 following values are reserved for its N=20k, 50k, and 100k streams. This prevents same-cement continuous or integer candidates from reusing a final-verification stream.",
+  "seed_base_note": "each candidate's base seed feeds decisive_verify(seed=base) at N=20000 (mfg seed=base, residual seed=base+1, cluster-bootstrap seed=base+2); escalation to N=50000 uses base+100, to N=100000 uses base+200. The 63-bit base allocation keeps each actual candidate stream separate and is disjoint from every search-stage seed.",
+  "generated_target_contract": "TARGET_CONTRACT.json is authoritative for this run"
+}

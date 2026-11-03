@@ -1,0 +1,126 @@
+{
+  "stage17_source": "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/Stage17_Direct_Local_Recipe_Porosity_Support_20260918",
+  "stage17_file_hashes": {
+    "config.json": "fb340d4dbd2f888e5e734bd5da390fe9e74f14bc916ef582e67b344c1cf3aad1",
+    "outputs\\selected_method.json": "16ad58568b260fc5a03f07a0b212c86fe97a7ddd4db347b6326bec41073cb1dd",
+    "outputs\\method_freeze.json": "049a37d9c336110d2ee5d2aa9c1d2a58f609f8c1a598c1d7d3427c1d55051192",
+    "outputs\\_phi_grid.npy": "282689f5a8b49d15cf5cf3088e1c039597870f1176552e8aec2c9aea487fcd12",
+    "outputs\\candidates_sealed.json": "00cb02b417f005973ae792d4f84ef9ab37a5670ee58091d2c48655185b8116b5",
+    "outputs\\historical_diagnostics.csv": "e26ec4bbecab381279314bb17de68dbc103aa462b28544fea75030d2af5207e1",
+    "src\\conditional_density.py": "54f808e2d7d70b5c3dcb8b78e71c3c567d32b424991295afd8435b359ee4e28a",
+    "src\\recipe_space.py": "e8fd6c7e9cc292032f6440383de6df335ebb49068cf6cf794525f24639da21fd",
+    "src\\conformal_hcds.py": "77ae392dfa59a9dfc39bd0e740825fc4c6c6b963e14b2197f9596f58fb663f43",
+    "src\\hdr.py": "4657f0d1825097b044eff1553ac73fbe8f07c2d724d120cd6be5a11e24e0be04",
+    "src\\historical_diagnostics.py": "d9c84e85e9faaaee3df1b832327025423c27894586a3a76609542b1923597452",
+    "src\\data_contract.py": "b82701a569f33afed5b2cae8f7e4b2ae57ddedddfd7539cb2394d74f7051938b"
+  },
+  "bundle_file": "b8_fulldata_bundle.pkl",
+  "bundle_sha256": "fc818e56ede2d655630e24f44bcdfd06e50767fd172cc124f1406dea247b08aa",
+  "src_copy_hashes": {
+    "conditional_density.py": "54f808e2d7d70b5c3dcb8b78e71c3c567d32b424991295afd8435b359ee4e28a",
+    "recipe_space.py": "e8fd6c7e9cc292032f6440383de6df335ebb49068cf6cf794525f24639da21fd",
+    "conformal_hcds.py": "77ae392dfa59a9dfc39bd0e740825fc4c6c6b963e14b2197f9596f58fb663f43",
+    "hdr.py": "4657f0d1825097b044eff1553ac73fbe8f07c2d724d120cd6be5a11e24e0be04"
+  },
+  "gate_threshold": 3.510265963792908,
+  "b8_weights": {
+    "B2": 0.022658469057108225,
+    "B3": 1.8719850363864628e-65,
+    "B4": 1.5038237619836314e-13,
+    "B5": 0.5462973425915546,
+    "B6": 0.33589727335220243,
+    "B7": 0.09514691499899133
+  },
+  "conformal_thresholds": {
+    "0.2": 0.0403577468702347,
+    "0.1": 0.026153594669187357,
+    "0.05": 0.017314994243130266
+  },
+  "member_conformal_thresholds": {
+    "B2": {
+      "0.2": 0.0318352833699988,
+      "0.1": 0.023933899914072916,
+      "0.05": 0.018341504513893186
+    },
+    "B3": {
+      "0.2": 0.029168648771116874,
+      "0.1": 0.023449268871726592,
+      "0.05": 0.01666712860629429
+    },
+    "B4": {
+      "0.2": 0.02792324760536808,
+      "0.1": 0.02339605589991177,
+      "0.05": 0.018450399933624448
+    },
+    "B5": {
+      "0.2": 0.027826088164350612,
+      "0.1": 0.011708483871926556,
+      "0.05": 0.006126836909503065
+    },
+    "B6": {
+      "0.2": 0.035866867881294236,
+      "0.1": 0.02191792719447499,
+      "0.05": 0.013787605224234603
+    },
+    "B7": {
+      "0.2": 0.026456795988710667,
+      "0.1": 0.015065838799875669,
+      "0.05": 0.01135524105732979
+    }
+  },
+  "member_configs": {
+    "B2": {
+      "h_phi": 4.5,
+      "k": 10
+    },
+    "B3": {
+      "h_phi": 4.5,
+      "k": 10
+    },
+    "B4": {
+      "h_phi": 4.0,
+      "h_x": 4.0,
+      "mode": "fixed"
+    },
+    "B5": {
+      "h": 0.4
+    },
+    "B6": {
+      "K": 6
+    },
+    "B7": {
+      "k": 30
+    }
+  },
+  "grid_lo": 2.1,
+  "grid_hi": 44.4,
+  "grid_step": 0.10000000000000009,
+  "grid_n": 424,
+  "n_fit": 536,
+  "n_cal": 95,
+  "deployment_domain_pp": [
+    20.0,
+    30.0
+  ],
+  "primary_hdr_mass": 0.9,
+  "build_env": {
+    "python": "3.12.3",
+    "numpy": "2.5.3",
+    "pandas": "2.3.3",
+    "scikit-learn": "1.7.2",
+    "scipy": "1.18.1"
+  },
+  "c267_check": {
+    "gate_pct": 59.51492537313433,
+    "conf90": [
+      [
+        2.1,
+        7.300000000000004
+      ],
+      [
+        24.70000000000002,
+        35.10000000000003
+      ]
+    ]
+  }
+}

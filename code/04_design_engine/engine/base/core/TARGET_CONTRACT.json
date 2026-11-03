@@ -1,0 +1,9 @@
+{
+  "contract_version": "1.0",
+  "purpose": "Authoritative targets for this generated inverse-design run",
+  "strength_target_mpa": 18.0,
+  "permeability_target_mm_s": 13.0,
+  "required_joint_reliability": 0.9,
+  "acceptance_rule": "one-sided 95% lower confidence bound >= required_joint_reliability",
+  "template_provenance": "bundled template/"
+}

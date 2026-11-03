@@ -1,0 +1,1090 @@
+{
+ "hyper": {
+  "outputscale": 0.4705232083797455,
+  "B": [
+   [
+    0.35433754324913025,
+    -0.10062328726053238
+   ],
+   [
+    -0.10062328726053238,
+    0.3324556350708008
+   ]
+  ],
+  "task_noise_std_units": [
+   0.035962142050266266,
+   0.013219814747571945
+  ],
+  "const_std_units": [
+   0.23675383627414703,
+   -0.4935421049594879
+  ],
+  "latent_task_corr": -0.2931723896932442,
+  "components": [
+   {
+    "name": "RBF on recipe",
+    "dims": [
+     "porosity",
+     "w/c",
+     "cem (kg/m3)",
+     "CA (kg/m3)",
+     "SP (kg/m3)",
+     "sand (kg/m3)"
+    ],
+    "ls_std": [
+     0.941030740737915,
+     1.0792847871780396,
+     2.2178831100463867,
+     1.6682449579238892,
+     0.6201140284538269,
+     0.5800839066505432
+    ],
+    "alpha": null
+   },
+   {
+    "name": "RQ on all 11 inputs",
+    "dims": [
+     "porosity",
+     "w/c",
+     "cem (kg/m3)",
+     "CA (kg/m3)",
+     "SP (kg/m3)",
+     "sand (kg/m3)",
+     "q10",
+     "q25",
+     "q50",
+     "q75",
+     "q90"
+    ],
+    "ls_std": [
+     1.021107792854309,
+     1.6389790773391724,
+     1.651914119720459,
+     0.2904961109161377,
+     1.0972791910171509,
+     0.40614888072013855,
+     2.2167108058929443,
+     2.2167108058929443,
+     2.2167108058929443,
+     2.2167108058929443,
+     2.2167108058929443
+    ],
+    "alpha": 0.2672727704048157
+   },
+   {
+    "name": "Binder RBF (w/c, cement, SP)",
+    "dims": [
+     "w/c",
+     "cem (kg/m3)",
+     "SP (kg/m3)"
+    ],
+    "ls_std": [
+     0.5901761651039124,
+     2.2240123748779297,
+     1.0783710479736328
+    ],
+    "alpha": null
+   },
+   {
+    "name": "Filler RBF (porosity, sand)",
+    "dims": [
+     "porosity",
+     "sand (kg/m3)"
+    ],
+    "ls_std": [
+     1.5061485767364502,
+     2.1450510025024414
+    ],
+    "alpha": null
+   }
+  ]
+ },
+ "check_hand_vs_engine_max_abs_std_units": 1.558802591261621e-05,
+ "match_max_dist": 9.67618981055174e-14,
+ "n_raw_after_perm_filter": 631,
+ "check_designs_hand_vs_engine": 5.429992036010134e-06,
+ "designs": [
+  {
+   "target": "10/8",
+   "CS_pred_MPa": 13.66,
+   "k_pred_mm_s": 13.86,
+   "CS_constant_MPa": 16.84,
+   "k_constant_mm_s": 3.27,
+   "CS_parts_MPa": {
+    "RBF on recipe": 0.96,
+    "RQ on all 11 inputs": 0.78,
+    "Binder RBF (w/c, cement, SP)": -0.87,
+    "Filler RBF (porosity, sand)": -4.05
+   },
+   "lnk_parts": {
+    "RBF on recipe": 0.319,
+    "RQ on all 11 inputs": 0.216,
+    "Binder RBF (w/c, cement, SP)": 0.444,
+    "Filler RBF (porosity, sand)": 0.466
+   },
+   "sum_weights_on_CS": 1.004,
+   "sum_weights_on_lnk_for_CS": 0.001,
+   "effective_n_records": 2.5,
+   "share_top10_abs_weight": 0.371,
+   "top_records": [
+    {
+     "study": "new - cui2016",
+     "ID": "0.32-25",
+     "weight_on_CS": 0.416,
+     "CS_meas": 11.5,
+     "k_meas": 12.62,
+     "cement": 201.0,
+     "wc": 0.32,
+     "porosity": 25.4,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      65.0,
+      35.0,
+      0.0
+     ],
+     "MPa_added": -2.79
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-15",
+     "weight_on_CS": 0.296,
+     "CS_meas": 10.0,
+     "k_meas": 15.82,
+     "cement": 240.0,
+     "wc": 0.3,
+     "porosity": 24.8,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": -2.21
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T4",
+     "weight_on_CS": 0.203,
+     "CS_meas": 16.0,
+     "k_meas": 13.68,
+     "cement": 309.0,
+     "wc": 0.27,
+     "porosity": 22.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -0.4
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T8",
+     "weight_on_CS": 0.173,
+     "CS_meas": 16.9,
+     "k_meas": 18.77,
+     "cement": 294.0,
+     "wc": 0.3,
+     "porosity": 24.2,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      47.4,
+      32.6,
+      20.0
+     ],
+     "MPa_added": 0.03
+    },
+    {
+     "study": "new - cui2016",
+     "ID": "0.34-25",
+     "weight_on_CS": -0.089,
+     "CS_meas": 10.5,
+     "k_meas": 13.62,
+     "cement": 195.0,
+     "wc": 0.34,
+     "porosity": 27.8,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      65.0,
+      35.0,
+      0.0
+     ],
+     "MPa_added": 1.12
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-20",
+     "weight_on_CS": 0.087,
+     "CS_meas": 23.9,
+     "k_meas": 7.46,
+     "cement": 320.0,
+     "wc": 0.3,
+     "porosity": 20.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 0.62
+    },
+    {
+     "study": "new - cui2016",
+     "ID": "0.32-20",
+     "weight_on_CS": 0.074,
+     "CS_meas": 13.4,
+     "k_meas": 6.6,
+     "cement": 278.0,
+     "wc": 0.32,
+     "porosity": 21.2,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      65.0,
+      35.0,
+      0.0
+     ],
+     "MPa_added": -0.23
+    },
+    {
+     "study": "21 - sahdeo2020",
+     "ID": "G3",
+     "weight_on_CS": -0.071,
+     "CS_meas": 15.5,
+     "k_meas": 7.14,
+     "cement": 396.6,
+     "wc": 0.3,
+     "porosity": 26.2,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      35.5,
+      36.4,
+      25.0,
+      3.0
+     ],
+     "MPa_added": 0.15
+    }
+   ],
+   "by_study_MPa": [
+    {
+     "study": "data source - new - cui2016",
+     "MPa": -2.153,
+     "weight": 0.417
+    },
+    {
+     "study": "data source - new - li 2021",
+     "MPa": -1.19,
+     "weight": 0.323
+    },
+    {
+     "study": "data source - new - chen 2025",
+     "MPa": -0.628,
+     "weight": 0.322
+    },
+    {
+     "study": "data source - new -Malaiskiene 2020",
+     "MPa": -0.547,
+     "weight": 0.134
+    },
+    {
+     "study": "data source - 15 - feric2023",
+     "MPa": 0.411,
+     "weight": 0.052
+    },
+    {
+     "study": "data source - 5 - singh2022",
+     "MPa": 0.341,
+     "weight": -0.046
+    }
+   ],
+   "CS_from_k_targets_MPa": 0.09
+  },
+  {
+   "target": "14/6",
+   "CS_pred_MPa": 18.92,
+   "k_pred_mm_s": 10.85,
+   "CS_constant_MPa": 16.84,
+   "k_constant_mm_s": 3.27,
+   "CS_parts_MPa": {
+    "RBF on recipe": 1.9,
+    "RQ on all 11 inputs": 2.46,
+    "Binder RBF (w/c, cement, SP)": 0.83,
+    "Filler RBF (porosity, sand)": -3.11
+   },
+   "lnk_parts": {
+    "RBF on recipe": 0.329,
+    "RQ on all 11 inputs": 0.114,
+    "Binder RBF (w/c, cement, SP)": 0.418,
+    "Filler RBF (porosity, sand)": 0.338
+   },
+   "sum_weights_on_CS": 1.0,
+   "sum_weights_on_lnk_for_CS": 0.0,
+   "effective_n_records": 3.1,
+   "share_top10_abs_weight": 0.311,
+   "top_records": [
+    {
+     "study": "new - chen 2025",
+     "ID": "T4",
+     "weight_on_CS": 0.256,
+     "CS_meas": 16.0,
+     "k_meas": 13.68,
+     "cement": 309.0,
+     "wc": 0.27,
+     "porosity": 22.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -0.48
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-15",
+     "weight_on_CS": 0.236,
+     "CS_meas": 10.0,
+     "k_meas": 15.82,
+     "cement": 240.0,
+     "wc": 0.3,
+     "porosity": 24.8,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": -1.81
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-20",
+     "weight_on_CS": 0.222,
+     "CS_meas": 23.9,
+     "k_meas": 7.46,
+     "cement": 320.0,
+     "wc": 0.3,
+     "porosity": 20.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 1.42
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b725-20",
+     "weight_on_CS": 0.165,
+     "CS_meas": 25.9,
+     "k_meas": 10.16,
+     "cement": 348.0,
+     "wc": 0.25,
+     "porosity": 22.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 1.47
+    },
+    {
+     "study": "15 - feric2023",
+     "ID": "PC7-25D",
+     "weight_on_CS": 0.127,
+     "CS_meas": 25.5,
+     "k_meas": 4.9,
+     "cement": 359.0,
+     "wc": 0.25,
+     "porosity": 18.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      34.5,
+      40.7,
+      24.8
+     ],
+     "MPa_added": 1.08
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b725-15",
+     "weight_on_CS": 0.107,
+     "CS_meas": 11.1,
+     "k_meas": 21.79,
+     "cement": 261.0,
+     "wc": 0.25,
+     "porosity": 29.2,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": -0.57
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T6",
+     "weight_on_CS": 0.1,
+     "CS_meas": 29.5,
+     "k_meas": 7.55,
+     "cement": 394.0,
+     "wc": 0.27,
+     "porosity": 19.9,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      35.6,
+      24.4,
+      40.0
+     ],
+     "MPa_added": 1.19
+    },
+    {
+     "study": "new - cui2016",
+     "ID": "0.32-25",
+     "weight_on_CS": 0.096,
+     "CS_meas": 11.5,
+     "k_meas": 12.62,
+     "cement": 201.0,
+     "wc": 0.32,
+     "porosity": 25.4,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      65.0,
+      35.0,
+      0.0
+     ],
+     "MPa_added": -0.62
+    }
+   ],
+   "by_study_MPa": [
+    {
+     "study": "data source - 15 - feric2023",
+     "MPa": 1.408,
+     "weight": 0.235
+    },
+    {
+     "study": "data source - new - li 2021",
+     "MPa": 0.979,
+     "weight": 0.651
+    },
+    {
+     "study": "data source - 11 - chandrappa2018",
+     "MPa": 0.498,
+     "weight": -0.083
+    },
+    {
+     "study": "data source - new -Malaiskiene 2020",
+     "MPa": -0.349,
+     "weight": 0.081
+    },
+    {
+     "study": "data source - new - chen 2025",
+     "MPa": -0.339,
+     "weight": 0.244
+    },
+    {
+     "study": "data source - 13 - silva2025",
+     "MPa": -0.286,
+     "weight": 0.021
+    }
+   ],
+   "CS_from_k_targets_MPa": 0.17
+  },
+  {
+   "target": "16/10",
+   "CS_pred_MPa": 21.47,
+   "k_pred_mm_s": 14.58,
+   "CS_constant_MPa": 16.84,
+   "k_constant_mm_s": 3.27,
+   "CS_parts_MPa": {
+    "RBF on recipe": 2.98,
+    "RQ on all 11 inputs": 2.1,
+    "Binder RBF (w/c, cement, SP)": 2.94,
+    "Filler RBF (porosity, sand)": -3.38
+   },
+   "lnk_parts": {
+    "RBF on recipe": 0.365,
+    "RQ on all 11 inputs": 0.299,
+    "Binder RBF (w/c, cement, SP)": 0.454,
+    "Filler RBF (porosity, sand)": 0.375
+   },
+   "sum_weights_on_CS": 1.002,
+   "sum_weights_on_lnk_for_CS": 0.0,
+   "effective_n_records": 4.3,
+   "share_top10_abs_weight": 0.374,
+   "top_records": [
+    {
+     "study": "new - chen 2025",
+     "ID": "T4",
+     "weight_on_CS": 0.318,
+     "CS_meas": 16.0,
+     "k_meas": 13.68,
+     "cement": 309.0,
+     "wc": 0.27,
+     "porosity": 22.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -0.57
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b725-20",
+     "weight_on_CS": 0.197,
+     "CS_meas": 25.9,
+     "k_meas": 10.16,
+     "cement": 348.0,
+     "wc": 0.25,
+     "porosity": 22.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 1.66
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T6",
+     "weight_on_CS": 0.169,
+     "CS_meas": 29.5,
+     "k_meas": 7.55,
+     "cement": 394.0,
+     "wc": 0.27,
+     "porosity": 19.9,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      35.6,
+      24.4,
+      40.0
+     ],
+     "MPa_added": 2.08
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T8",
+     "weight_on_CS": 0.135,
+     "CS_meas": 16.9,
+     "k_meas": 18.77,
+     "cement": 294.0,
+     "wc": 0.3,
+     "porosity": 24.2,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      47.4,
+      32.6,
+      20.0
+     ],
+     "MPa_added": -0.06
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-20",
+     "weight_on_CS": 0.103,
+     "CS_meas": 23.9,
+     "k_meas": 7.46,
+     "cement": 320.0,
+     "wc": 0.3,
+     "porosity": 20.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 0.71
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T5",
+     "weight_on_CS": 0.066,
+     "CS_meas": 34.9,
+     "k_meas": 6.03,
+     "cement": 479.0,
+     "wc": 0.27,
+     "porosity": 12.3,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      47.4,
+      32.6,
+      20.0
+     ],
+     "MPa_added": 1.15
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T1",
+     "weight_on_CS": -0.054,
+     "CS_meas": 31.5,
+     "k_meas": 1.2,
+     "cement": 505.0,
+     "wc": 0.24,
+     "porosity": 12.6,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -0.81
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T9",
+     "weight_on_CS": -0.049,
+     "CS_meas": 32.5,
+     "k_meas": 0.88,
+     "cement": 456.0,
+     "wc": 0.3,
+     "porosity": 13.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      35.6,
+      24.4,
+      40.0
+     ],
+     "MPa_added": -0.82
+    }
+   ],
+   "by_study_MPa": [
+    {
+     "study": "data source - new - li 2021",
+     "MPa": 2.489,
+     "weight": 0.312
+    },
+    {
+     "study": "data source - new - chen 2025",
+     "MPa": 1.549,
+     "weight": 0.655
+    },
+    {
+     "study": "data source - 15 - feric2023",
+     "MPa": 0.426,
+     "weight": 0.139
+    },
+    {
+     "study": "data source - 11 - chandrappa2018",
+     "MPa": 0.266,
+     "weight": -0.036
+    },
+    {
+     "study": "data source - 7 - bian2022",
+     "MPa": 0.235,
+     "weight": -0.058
+    },
+    {
+     "study": "data source - new -Malaiskiene 2020",
+     "MPa": -0.212,
+     "weight": 0.066
+    }
+   ],
+   "CS_from_k_targets_MPa": -0.08
+  },
+  {
+   "target": "20/4",
+   "CS_pred_MPa": 24.95,
+   "k_pred_mm_s": 9.38,
+   "CS_constant_MPa": 16.84,
+   "k_constant_mm_s": 3.27,
+   "CS_parts_MPa": {
+    "RBF on recipe": 2.97,
+    "RQ on all 11 inputs": 4.08,
+    "Binder RBF (w/c, cement, SP)": 3.01,
+    "Filler RBF (porosity, sand)": -1.94
+   },
+   "lnk_parts": {
+    "RBF on recipe": 0.331,
+    "RQ on all 11 inputs": 0.095,
+    "Binder RBF (w/c, cement, SP)": 0.455,
+    "Filler RBF (porosity, sand)": 0.172
+   },
+   "sum_weights_on_CS": 1.002,
+   "sum_weights_on_lnk_for_CS": 0.0,
+   "effective_n_records": 3.3,
+   "share_top10_abs_weight": 0.379,
+   "top_records": [
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-20",
+     "weight_on_CS": 0.315,
+     "CS_meas": 23.9,
+     "k_meas": 7.46,
+     "cement": 320.0,
+     "wc": 0.3,
+     "porosity": 20.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 1.98
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b725-20",
+     "weight_on_CS": 0.259,
+     "CS_meas": 25.9,
+     "k_meas": 10.16,
+     "cement": 348.0,
+     "wc": 0.25,
+     "porosity": 22.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 2.19
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T6",
+     "weight_on_CS": 0.183,
+     "CS_meas": 29.5,
+     "k_meas": 7.55,
+     "cement": 394.0,
+     "wc": 0.27,
+     "porosity": 19.9,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      35.6,
+      24.4,
+      40.0
+     ],
+     "MPa_added": 2.21
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T4",
+     "weight_on_CS": 0.167,
+     "CS_meas": 16.0,
+     "k_meas": 13.68,
+     "cement": 309.0,
+     "wc": 0.27,
+     "porosity": 22.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -0.22
+    },
+    {
+     "study": "15 - feric2023",
+     "ID": "PC7-25D",
+     "weight_on_CS": 0.147,
+     "CS_meas": 25.5,
+     "k_meas": 4.9,
+     "cement": 359.0,
+     "wc": 0.25,
+     "porosity": 18.7,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      34.5,
+      40.7,
+      24.8
+     ],
+     "MPa_added": 1.24
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b725-25",
+     "weight_on_CS": 0.084,
+     "CS_meas": 29.9,
+     "k_meas": 5.19,
+     "cement": 435.0,
+     "wc": 0.25,
+     "porosity": 15.0,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": 1.1
+    },
+    {
+     "study": "new - chen 2025",
+     "ID": "T1",
+     "weight_on_CS": -0.073,
+     "CS_meas": 31.5,
+     "k_meas": 1.2,
+     "cement": 505.0,
+     "wc": 0.24,
+     "porosity": 12.6,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      0.0,
+      59.3,
+      40.7,
+      0.0
+     ],
+     "MPa_added": -1.07
+    },
+    {
+     "study": "new - li 2021",
+     "ID": "C-0\u00b730-15",
+     "weight_on_CS": 0.067,
+     "CS_meas": 10.0,
+     "k_meas": 15.82,
+     "cement": 240.0,
+     "wc": 0.3,
+     "porosity": 24.8,
+     "sand": 0.0,
+     "bins": [
+      0.0,
+      0.0,
+      7.4,
+      59.3,
+      33.3,
+      0.0
+     ],
+     "MPa_added": -0.4
+    }
+   ],
+   "by_study_MPa": [
+    {
+     "study": "data source - new - li 2021",
+     "MPa": 5.172,
+     "weight": 0.697
+    },
+    {
+     "study": "data source - 15 - feric2023",
+     "MPa": 1.558,
+     "weight": 0.248
+    },
+    {
+     "study": "data source - new - chen 2025",
+     "MPa": 1.355,
+     "weight": 0.235
+    },
+    {
+     "study": "data source - 11 - chandrappa2018",
+     "MPa": 0.423,
+     "weight": -0.022
+    },
+    {
+     "study": "data source - new - huang2020",
+     "MPa": -0.377,
+     "weight": -0.011
+    },
+    {
+     "study": "data source - new - Kabagire 2018",
+     "MPa": -0.294,
+     "weight": 0.039
+    }
+   ],
+   "CS_from_k_targets_MPa": 0.01
+  }
+ ],
+ "n_records_sand_zero": 481,
+ "slopes": [
+  {
+   "input": "porosity",
+   "step": "per +1 % point",
+   "CS_median_MPa": -0.553,
+   "CS_share_negative": 0.954,
+   "lnk_median": 0.0763,
+   "k_median_pct": 7.9,
+   "lnk_share_positive": 0.919
+  },
+  {
+   "input": "w/c",
+   "step": "per +0.01",
+   "CS_median_MPa": 0.076,
+   "CS_share_negative": 0.46,
+   "lnk_median": -0.0223,
+   "k_median_pct": -2.2,
+   "lnk_share_positive": 0.377
+  },
+  {
+   "input": "cem (kg/m3)",
+   "step": "per +10 kg/m3",
+   "CS_median_MPa": 0.258,
+   "CS_share_negative": 0.063,
+   "lnk_median": -0.0228,
+   "k_median_pct": -2.3,
+   "lnk_share_positive": 0.12
+  },
+  {
+   "input": "CA (kg/m3)",
+   "step": "per +50 kg/m3",
+   "CS_median_MPa": -0.001,
+   "CS_share_negative": 0.501,
+   "lnk_median": 0.0213,
+   "k_median_pct": 2.2,
+   "lnk_share_positive": 0.639
+  },
+  {
+   "input": "SP (kg/m3)",
+   "step": "per +0.25 kg/m3",
+   "CS_median_MPa": 0.622,
+   "CS_share_negative": 0.235,
+   "lnk_median": -0.0253,
+   "k_median_pct": -2.5,
+   "lnk_share_positive": 0.368
+  },
+  {
+   "input": "sand (kg/m3)",
+   "step": "per +10 kg/m3",
+   "CS_median_MPa": 0.225,
+   "CS_share_negative": 0.319,
+   "lnk_median": -0.0134,
+   "k_median_pct": -1.3,
+   "lnk_share_positive": 0.393
+  },
+  {
+   "input": "all five passing sizes",
+   "step": "+0.1 log2 (~7% coarser)",
+   "CS_median_MPa": -0.114,
+   "CS_share_negative": 0.746,
+   "lnk_median": 0.0102,
+   "k_median_pct": 1.0,
+   "lnk_share_positive": 0.753
+  },
+  {
+   "input": "w/c, records with 0<=w/c<0.3 (n=193)",
+   "step": "per +0.01",
+   "CS_median_MPa": 0.153,
+   "CS_share_negative": 0.42,
+   "lnk_median": 0.0165,
+   "k_median_pct": 1.7,
+   "lnk_share_positive": 0.668
+  },
+  {
+   "input": "w/c, records with 0.3<=w/c<9 (n=438)",
+   "step": "per +0.01",
+   "CS_median_MPa": 0.05,
+   "CS_share_negative": 0.477,
+   "lnk_median": -0.0362,
+   "k_median_pct": -3.6,
+   "lnk_share_positive": 0.249
+  }
+ ],
+ "component_spread_over_data": [
+  {
+   "component": "RBF on recipe",
+   "CS_sd_MPa": 1.93,
+   "lnk_sd": 0.212
+  },
+  {
+   "component": "RQ on all 11 inputs",
+   "CS_sd_MPa": 1.54,
+   "lnk_sd": 0.226
+  },
+  {
+   "component": "Binder RBF (w/c, cement, SP)",
+   "CS_sd_MPa": 2.87,
+   "lnk_sd": 0.199
+  },
+  {
+   "component": "Filler RBF (porosity, sand)",
+   "CS_sd_MPa": 4.14,
+   "lnk_sd": 0.554
+  }
+ ],
+ "measured_sd": {
+  "CS_MPa": 8.233956257122214,
+  "lnk": 1.1575690042631293
+ }
+}

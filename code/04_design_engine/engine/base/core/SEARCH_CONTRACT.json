@@ -1,0 +1,236 @@
+{
+  "contract_version": "7.1.0-blind-discovery-repair",
+  "run_id": "runs/Stage1_Automated_20261001_211150/run_01",
+  "frozen_before_first_production_eval": true,
+  "purpose": "Full 11-DOF blind joint Stage-One inverse design: discover low-cement feasible basins from declared space-filling/data-anchored proposals, then confirm the lowest best-found integer level locally.",
+  "targets": {
+    "strength_mpa": 18.0,
+    "permeability_mm_s": 13.0,
+    "required_integrated_reliability": 0.9
+  },
+  "support_threshold": 0.25,
+  "practical_cement_reporting_resolution_kg_m3": 1,
+  "excluded_from_production_run": [
+    "CMA-ES",
+    "Bayesian optimisation",
+    "SHGO",
+    "DIRECT",
+    "branch-and-bound certification",
+    "exhaustive gradation lattice",
+    "gradation-shape penalty/regularizer/preference/tie-break of any kind"
+  ],
+  "performance_optimization_fast_descriptors": "src/fast_descriptors.py -- a vectorised, process-local monkey-patch replacement for stage1_evaluator.cached_descriptors (never modifies the frozen file on disk). Precomputes the fixed bin-edge-to-grid-threshold linear map once instead of a 500x6 nested Python loop per call, and computes the grid-passing curve once per candidate instead of twice (the frozen code recomputes it once per D10/D60 percentile lookup). Independently re-verified in this session against the frozen descriptors_precise on 5,000 synthetic gradations (random simplex draws, zero-mass-bin cases, exact vertices, two-bin edges): max relative difference ~1e-15, zero NaN mismatches (tests/test_fast_descriptors_equivalence.py). Installed at process start in every Phase A-D driver and in efficient_verification.py; DISABLE_FAST_DESCRIPTORS=1 opts out for a byte-for-byte comparison run if ever needed.",
+  "design_vector": {
+    "dimensions": 11,
+    "representation": "codec11.py stick11 codec, UNCHANGED, cement coordinate x11[0] now FREE (no fixed_cement_codec wrapper in Phases A-C).",
+    "variables": [
+      "C (cement, kg/m3)",
+      "r (w/c)",
+      "A (total coarse aggregate, kg/m3)",
+      "P (superplasticizer, kg/m3)",
+      "S (sand, kg/m3)",
+      "phi (nominal hardened porosity, %)",
+      "g1..g6 (5 independent stick-breaking DOF)"
+    ],
+    "admissible_bounds_source": "solvers_common.BND, resolved via codec11.py's shim.py import to the FROZEN research/Stage1_CA_Aware_Optimizer_20260914/run_01/src/solvers_common.py -- NOT invented or expanded for run_05.",
+    "admissible_bounds_verified": {
+      "C_kg_m3": [
+        200.0,
+        700.14
+      ],
+      "r_wc": [
+        0.1993657558,
+        0.4097948621
+      ],
+      "A_CA_kg_m3": [
+        1041.32,
+        1800.0
+      ],
+      "P_SP_kg_m3": [
+        0.0,
+        17.0
+      ],
+      "S_sand_kg_m3": [
+        0.0,
+        334.89
+      ],
+      "phi_pct": [
+        6.2,
+        38.02
+      ]
+    }
+  },
+  "phase_A_de_continuous_discovery": {
+    "algorithm_as_originally_planned": "canonical DE/rand/1/bin, repaired donor exclusion (pool excludes target index i), jittered mutation F=0.7*Uniform(0.5,1.0), binomial crossover CR=0.9 with forced jrand -- same repaired core as run_02/run_03's src/de_core.py-style loop, reused via a new src/full_de_search.py adapted from run_04/src/robust_de.py (11-D codec11 directly, cement free, no fixed_cement wrapper).",
+    "algorithm_actually_used_in_the_reported_production_run": "jDE self-adaptive DE/rand/1/bin (Brest et al. 2006): identical donor selection/crossover structure, but each individual carries its own (F, CR) that self-adapts from the fitness landscape (re-randomised with small probability each generation, kept only when the resulting trial is accepted) instead of a fixed jitter schedule. Implemented as an opt-in --adaptive flag in src/full_de_search.py (default False, i.e. the originally-planned fixed-jitter scheme; ALL FOUR Phase A seeds in the reported run used --adaptive=True). This was a deliberate choice at the point of use (not a silent substitution): self-adaptive F/CR removes the need to hand-tune a fixed jitter schedule and is target-agnostic (does not encode any assumption about where the reliability boundary lies), at the cost of not being the originally pre-registered fixed-jitter DE. Documented here plainly since it is a real algorithm choice, not a bug fix or a performance-only change.",
+    "objective": "feasibility-first robust merit: unsupported designs are rejected; then reliability shortfall to the required target is minimized, with cement retained as a secondary gradient below the target and minimized once the target is reached. No 0.92 feasibility cliff is used.",
+    "n_seeds": 4,
+    "seeds": [
+      2718281,
+      3141592,
+      1618033,
+      5772156
+    ],
+    "popsize": 25,
+    "generations": 100,
+    "patience_generations_no_improvement": 25,
+    "budget_note": "popsize*generations+popsize = 1020 evaluations/seed (4,080 total). Benchmarked cost at N=512: 1.226s/eval SOLO. An initial attempt ran the 4 seeds as 4 parallel processes (OMP_NUM_THREADS=2 each, 8 logical cores) at popsize=25/generations=100; measured cost came back at ~8.3s/eval (gen 1 of 4 concurrent seeds: 393-438s for 50 evals each) -- roughly 6-7x the solo cost, not the expected ~1-2x, indicating the OMP/MKL thread caps were not preventing oversubscription on this machine. That run was ABORTED (traces/checkpoints removed) rather than continued at an 11-hour projected Phase-A wall time. Phase A was RELAUNCHED SEQUENTIALLY (one seed at a time, no parallelism) at the reduced popsize/generations above: 1020 evals/seed * 1.226s = ~20.8 min/seed, ~83 min total for 4 seeds. This is a documented, measured-cost-driven reduction within the driving prompt's 'roughly 3,000-5,000 evals/seed unless runtime justifies adjustment' / 'should not reproduce the earlier multi-hour optimizer zoo' guidance.",
+    "search_scenario_bank": {
+      "n_scenarios": 512,
+      "seed": 205609151,
+      "note": "ONE common-random manufacturing+residual bank shared by all 4 DE seeds and the whole Phase A stage; search-time surrogate only, never used for decisive verification."
+    },
+    "initial_population": "Blind adaptive initializer (adaptive_init.py), invoked by full_de_search.py before every DE seed: 4096 scrambled-Sobol scalar samples plus simplex-aware Dirichlet(1)/Dirichlet(0.3)/data-fitted-prior gradations, 512 data-anchored perturbation/interpolation samples, fail-closed state-support screen, three common-random successive-halving rounds (64, 128, 256 scenarios), and a multi-round diverse Pareto archive with fresh global injections. No prior result coordinates are used.",
+    "shortlist_retention": "EVERY evaluated candidate across all generations/seeds with Rhat>=0.85 (not only the single running best) is retained in tables/DE_CONTINUOUS_SEARCH.csv, per Section 6 of the driving prompt (do not let search noise create a false minimum by discarding near-boundary candidates).",
+    "adaptive_init": {
+      "stage0_n": 4096,
+      "scalar_design": "scrambled Sobol in the six scalar unit-cube coordinates; deterministic Latin-hypercube fallback when scipy.stats.qmc is unavailable",
+      "seed": 205609100,
+      "mixture_weights": [
+        0.4,
+        0.3,
+        0.3
+      ],
+      "dirichlet_small_alpha": 0.3,
+      "zero_bin_epsilon": 0.001,
+      "zero_bin_fraction": 0.2,
+      "refine_rounds": 3,
+      "elite_frac": 0.1,
+      "diversity_L2": 0.05,
+      "scenario_schedule": [
+        64,
+        128,
+        256
+      ],
+      "candidate_log_fields": [
+        "round",
+        "candidate_index",
+        "source",
+        "n_scenarios",
+        "Rhat",
+        "C",
+        "in_bounds",
+        "support_score_pass",
+        "stage17_recipe_gate",
+        "gradation_w1_gate",
+        "porosity_hdr",
+        "deployment_window",
+        "state_support",
+        "reliability_gate",
+        "verified",
+        "WAS",
+        "I_gap",
+        "Cu",
+        "Aag"
+      ],
+      "global_injection": "At each refinement round, inject a fresh Sobol/Dirichlet proposal block; archive all rounds before diverse selection.",
+      "timing_telemetry": "Round elapsed seconds, candidate count, scenario count, and cost per candidate are written to adaptive_init_seed*_rounds.csv; every DE generation writes the same fields plus accepted count and cumulative evaluations."
+    },
+    "search_safety_margin": {
+      "working_target_offset": 0.0,
+      "note": "The search target equals the required reliability. Statistical conservatism belongs to final decisive verification; a harder search threshold can erase valid low-cement basins before refinement."
+    },
+    "telemetry": "DE_SEED_COMPARISON.csv and SEARCH_TIMING_BOTTLENECKS.csv"
+  },
+  "phase_B_rescreen": {
+    "purpose": "Deduplicate near-identical DE solutions and rescore leading candidates on a FRESH, LARGER, common-random bank disjoint from the Phase A search bank, before committing to NOMAD starts.",
+    "dedup_rule": "two candidates are locally near-identical if their codec11 encode11() L2 distance < 0.1 (11-D unit-cube coordinates), using the original greedy local-basin representatives. For every local basin retain BOTH its lower-cement boundary representative and its maximum Phase-A-Rhat representative (one record if identical). This post-Phase-A correction avoids discarding a higher-cement feasible seed merely because cement is the minimisation variable. On the 918-row shortlist it retains 31 candidates: 16 boundary representatives plus 15 distinct reliability seeds.",
+    "rescreen_bank": {
+      "n_scenarios": 5000,
+      "seed": 205609201,
+      "note": "disjoint from the Phase A search seed (205609151) and from every decisive-verification seed."
+    },
+    "candidates_rescreened": "every DE shortlist entry (Rhat_search>=threshold at N=512) after deduplication; weaker near-misses remain diagnostic/continuation records but cannot be final selections.",
+    "selection_for_phase_C": "top 6-10 distinct basins by (support/domain validity, then Phase-B Rhat feasibility, then minimum cement) -- never by gradation shape."
+  },
+  "phase_C_nomad_refinement": {
+    "algorithm": "genuine PyNomad MADS, full 11-D (codec11 directly, cement free -- NOT fixed_cement_codec).",
+    "objective": "f = cement (kg/m3), minimize",
+    "constraint": "PB: c_rel = 0.90 - Rhat <= 0",
+    "starts": "every distinct supported feasible DE_dedup basin selected in Phase B (target 6-10); infeasible points are continuation diagnostics only. F1: feasible-only best (x_single_best infeasible never promoted). W1 gradation gate as 4th PB constraint (TASK A2).",
+    "max_bb_eval_per_start": 150,
+    "search_scenario_bank": {
+      "n_scenarios": 1024,
+      "seed": 205609301,
+      "note": "fresh common-random bank for Phase C, disjoint from Phase A (205609151), Phase B (205609201), and every decisive-verification seed."
+    },
+    "output": "best-found CONTINUOUS frontier candidate(s) -- reported as a best-found frontier region, never as an exact decimal-precision optimum (Section 14 of the driving prompt)."
+  },
+  "phase_D_integer_cement_profile": {
+    "purpose": "1 kg/m3-resolution fixed-cement verification profile around the continuous frontier located in Phases A-C, to answer 'why not 266 or 271' with an adjacent-integer FAIL/PASS bracket rather than a fabricated decimal.",
+    "codec": "src/fixed_cement_codec.py (reused unchanged from run_04) wrapping codec11.py -- cement pinned exactly per tested integer level, all other 10 variables free and RE-OPTIMIZED at every level (never copied unchanged from the continuous result).",
+    "window_selection": "Only entered after Phase C finds a state-supported continuous candidate at or above the required search reliability. Start at its floor integer, test lower levels in a 10 kg/m3 coarse descent, then re-optimise only the final 1 kg/m3 bracket. A plainly implausible search result may skip decisive verification; it can never pass a candidate. Global fixed-cement discovery (blind_repair.fixed_cement_discovery) now runs first when continuous discovery is empty, so Phase D is no longer gated on a single continuous basin.",
+    "starts_per_level": "strongest distinct supported feasible Phase-C basins from this run; infeasible points are never promoted. F1 feasible-only; Phase D re-optimises all 10 free vars per level.",
+    "max_bb_eval_per_start": 150,
+    "search_scenario_bank": {
+      "n_scenarios": 512,
+      "seed": 205609401,
+      "note": "disjoint from every other search/verification seed in this contract."
+    },
+    "stopping_rule": "Stop with an explicit negative decision if blind discovery finds no feasible basin. Otherwise identify the lowest locally profiled integer whose independently re-optimized candidate decisively passes and confirm the immediately lower integer outcome after its own re-optimization. No upward scan from a failed basin is allowed."
+  },
+  "excluded_variables": "no variable outside the 11-DOF Stage-One design vector is introduced; no gradation-shape penalty, smoothness preference, zero-bin penalty, sand preference, or aesthetic tie-breaker of any kind (tests/test_no_gradation_penalty.py, reused unchanged, still enforced).",
+  "primary_domain": {
+    "A_CA": {
+      "hi": 1800.0,
+      "lo": 1041.32,
+      "source": "cohort p02/p98 (same percentile policy as 9D contract); outer empirical guard 925.62-1978.633 recorded, not searched beyond primary",
+      "units": "kg/m3"
+    },
+    "C": {
+      "hi": 700.14,
+      "lo": 200.0,
+      "source": "prior practical-search contract p02/p98 of saved training features",
+      "units": "kg/m3"
+    },
+    "P_SP": {
+      "hi": 17.0,
+      "lo": 0.0,
+      "source": "prior contract (tiny negative reconstruction artifacts set to 0)",
+      "units": "kg/m3 predictor basis"
+    },
+    "S_sand": {
+      "hi": 334.89,
+      "lo": 0.0,
+      "source": "prior contract (tiny negatives -> 0)",
+      "units": "kg/m3"
+    },
+    "phi_hardened_porosity": {
+      "hi": 38.02,
+      "lo": 6.2,
+      "source": "prior contract p02/p98",
+      "units": "percent achieved hardened porosity"
+    },
+    "r_wc": {
+      "hi": 0.4097948621,
+      "lo": 0.1993657558,
+      "source": "prior contract full-precision values",
+      "units": "authoritative model w/c predictor"
+    }
+  },
+  "primary_domain_provenance": "R1 integration repair (Stage-18, pre-existing portable-break fix): exact copy of research/Stage1_CA_Aware_Optimizer_20260914/run_01/SEARCH_CONTRACT.json primary_domain. Values numerically identical to the design_vector.admissible_bounds_verified already in this file and to the bounds used by run_05 via the absolute-path shim. No bound changed; enables portable runs where src/shim.py is the bundled portable_shim.",
+  "gradation_support_gate": {
+    "contract": "GRADATION_SUPPORT_CONTRACT.json",
+    "enabled": true,
+    "epsilon_95": 0.22334742733035987,
+    "epsilon_90": 0.1882651575300191,
+    "epsilon_99": 0.2900356905012872,
+    "note": "Ordered-bin W1 hard support gate, zero inside; not a shape preference."
+  },
+  "observability": {
+    "candidate_level_outputs": "adaptive_init_seed*_candidates.csv and de_candidate_trace_seed*.csv",
+    "seed_comparison_output": "DE_SEED_COMPARISON.csv",
+    "timing_output": "TIMING_BENCHMARKS.csv and SEARCH_TIMING_BOTTLENECKS.csv",
+    "finalist_banks": "Phase B/C/D use disjoint search banks; decisive verification derives an independent candidate-specific bank stream and records its hashes."
+  },
+  "blind_repair": {
+    "continuous_guidance": "template/src/continuous_score.py (CVaR-like lower-tail joint-margin score, search-only; final PASS uses literal Rhat + one-sided 95% LCB only)",
+    "proposals": "template/src/proposal_engine.py + adaptive_init.blind_proposals (target-independent mixture: global Sobol, empirical full-covariance clusters, boundary atoms, simplex gradations; source logged per candidate; fails closed)",
+    "basins": "template/src/basin_archive.py (normalized-space clustering, per-basin minimum allocation, novelty quota, anti-monopoly cap)",
+    "multifidelity": "template/src/multifidelity.py (STAGE1_FID_GLOBAL/MID/REFINED/CONFIRM; CRN within stage, fresh seeds between stages; plausible-retention, no premature elimination)",
+    "fixed_cement_discovery": "global coarse schedule STAGE1_FIXED_CEMENT_LO/HI/STEP (defaults 200/700/25) with 25->5->1 refinement per plausible region; no monotonicity assumption; decisive verification only for plausible boundary candidates",
+    "batching": "template/src/batched_eval.py (bounded batches, equivalence-checked, sequential fallback)",
+    "budgets": "RUN_BUDGETS.json records every env override; production defaults apply when no override is set"
+  },
+  "generated_target_contract": "TARGET_CONTRACT.json is authoritative for this run"
+}

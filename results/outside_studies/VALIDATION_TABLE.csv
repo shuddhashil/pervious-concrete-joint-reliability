@@ -1,0 +1,14 @@
+group,data,mode,n,cs_sd,cs_rmse,cs_mae,cs_r2,lnk_sd,lnk_rmse,lnk_mae,lnk_r2
+Within the 631-record data,Random 80/20 splits (5),lab seen in training,627,7.534,2.429,1.68,0.896,1.17,0.324,0.192,0.923
+Within the 631-record data,Study-grouped 5-fold,new lab,631,8.24,6.139,4.416,0.444,1.158,0.894,0.695,0.404
+Within the 631-record data,Study-grouped 5-fold,3 nearest,631,8.24,2.753,1.808,0.888,1.158,0.308,0.192,0.929
+Outside studies,Ghosh et al. (2026),new lab,17,1.474,1.542,1.106,-0.163,0.516,0.835,0.749,-1.781
+Outside studies,Ghosh et al. (2026),3 nearest,17,1.474,1.54,1.233,-0.159,0.516,0.377,0.268,0.434
+Outside studies,Ghosh and Singh (2026a),new lab,24,1.834,1.742,1.448,0.058,0.415,0.874,0.775,-3.641
+Outside studies,Ghosh and Singh (2026a),3 nearest,24,1.834,0.988,0.79,0.697,0.415,0.175,0.132,0.813
+Outside studies,Mahalingam and Mahalingam (2016),new lab,10,4.17,2.723,1.976,0.526,0.246,0.496,0.478,-3.494
+Outside studies,Mahalingam and Mahalingam (2016),3 nearest,10,4.17,1.628,1.173,0.831,0.246,0.096,0.075,0.831
+Outside studies,Meininger (1988),new lab,8,2.64,3.122,2.735,-0.598,1.095,0.547,0.471,0.714
+Outside studies,Meininger (1988),3 nearest,8,2.64,2.21,1.724,0.199,1.095,0.306,0.242,0.911
+Outside studies,All four pooled,new lab,59,4.21,2.121,1.613,0.742,0.842,0.771,0.676,0.147
+Outside studies,All four pooled,3 nearest,59,4.21,1.48,1.109,0.874,0.842,0.26,0.177,0.903

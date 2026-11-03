@@ -1,0 +1,282 @@
+{
+ "rule": "per round: cells = highest supported cell + the first two cells above it in every K* column (0.90, acceptance rule 0.902); short search per cell; designs added to the pool; reclassify all 920 targets",
+ "rounds": [
+  {
+   "round": 1,
+   "mode": "lshade",
+   "equivalence_sample_run": false,
+   "cells_in_rule": 57,
+   "cells_skipped_same_starts": 0,
+   "cells_searched": 53,
+   "truncated_by_time": false,
+   "searches_passed_own_acceptance": 23,
+   "designs_returned": 314,
+   "designs_added_after_screen": 309,
+   "screen": {
+    "n_in": 314,
+    "gate_fail": 0,
+    "family_fail_among_gate_ok": 0,
+    "support_fail_among_gate_family_ok": 5,
+    "kept": 309,
+    "stageA_nominal_support_ok": 309,
+    "eligible_all11": 309
+   },
+   "supported_before": 376,
+   "supported_after": 386,
+   "newly_supported": 10,
+   "lost": 0,
+   "edge_before": {
+    "0.5000": 30.0,
+    "0.6202": 30.0,
+    "0.7694": 30.0,
+    "0.9544": 30.0,
+    "1.1839": 30.0,
+    "1.4686": 30.0,
+    "1.8218": 30.0,
+    "2.2598": 30.0,
+    "2.8033": 29.0,
+    "3.4774": 29.0,
+    "4.3136": 27.0,
+    "5.3509": 26.0,
+    "6.6376": 25.0,
+    "8.2338": 22.0,
+    "10.2138": 19.0,
+    "12.6699": 17.0,
+    "15.7167": 10.0,
+    "19.4961": null,
+    "24.1843": null,
+    "30.0000": null
+   },
+   "edge_after": {
+    "0.5000": 31.0,
+    "0.6202": 31.0,
+    "0.7694": 31.0,
+    "0.9544": 31.0,
+    "1.1839": 31.0,
+    "1.4686": 30.0,
+    "1.8218": 30.0,
+    "2.2598": 30.0,
+    "2.8033": 30.0,
+    "3.4774": 29.0,
+    "4.3136": 28.0,
+    "5.3509": 26.0,
+    "6.6376": 25.0,
+    "8.2338": 23.0,
+    "10.2138": 20.0,
+    "12.6699": 17.0,
+    "15.7167": 11.0,
+    "19.4961": null,
+    "24.1843": null,
+    "30.0000": null
+   },
+   "seconds": {
+    "search": 1263.5,
+    "append_stageA": 5.7,
+    "classify": 171.6,
+    "total": 1441.3
+   },
+   "gpu_peak_so_far": 74
+  },
+  {
+   "round": 2,
+   "mode": "polish",
+   "equivalence_sample_run": true,
+   "cells_in_rule": 57,
+   "cells_skipped_same_starts": 5,
+   "cells_searched": 60,
+   "truncated_by_time": false,
+   "searches_passed_own_acceptance": 22,
+   "designs_returned": 221,
+   "designs_added_after_screen": 209,
+   "screen": {
+    "n_in": 221,
+    "gate_fail": 12,
+    "family_fail_among_gate_ok": 0,
+    "support_fail_among_gate_family_ok": 0,
+    "kept": 209,
+    "stageA_nominal_support_ok": 209,
+    "eligible_all11": 196
+   },
+   "supported_before": 386,
+   "supported_after": 386,
+   "newly_supported": 0,
+   "lost": 0,
+   "edge_before": {
+    "0.5000": 31.0,
+    "0.6202": 31.0,
+    "0.7694": 31.0,
+    "0.9544": 31.0,
+    "1.1839": 31.0,
+    "1.4686": 30.0,
+    "1.8218": 30.0,
+    "2.2598": 30.0,
+    "2.8033": 30.0,
+    "3.4774": 29.0,
+    "4.3136": 28.0,
+    "5.3509": 26.0,
+    "6.6376": 25.0,
+    "8.2338": 23.0,
+    "10.2138": 20.0,
+    "12.6699": 17.0,
+    "15.7167": 11.0,
+    "19.4961": null,
+    "24.1843": null,
+    "30.0000": null
+   },
+   "edge_after": {
+    "0.5000": 31.0,
+    "0.6202": 31.0,
+    "0.7694": 31.0,
+    "0.9544": 31.0,
+    "1.1839": 31.0,
+    "1.4686": 30.0,
+    "1.8218": 30.0,
+    "2.2598": 30.0,
+    "2.8033": 30.0,
+    "3.4774": 29.0,
+    "4.3136": 28.0,
+    "5.3509": 26.0,
+    "6.6376": 25.0,
+    "8.2338": 23.0,
+    "10.2138": 20.0,
+    "12.6699": 17.0,
+    "15.7167": 11.0,
+    "19.4961": null,
+    "24.1843": null,
+    "30.0000": null
+   },
+   "seconds": {
+    "search": 438.3,
+    "append_stageA": 3.0,
+    "classify": 68.6,
+    "total": 510.0
+   },
+   "gpu_peak_so_far": 74
+  }
+ ],
+ "equivalence_check": {
+  "round": 2,
+  "sample": [
+   {
+    "S": 31.0,
+    "K": 0.5,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9144,
+     "s": 22.83
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9149,
+     "s": 4.4
+    }
+   },
+   {
+    "S": 31.0,
+    "K": 0.769,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9124,
+     "s": 20.0
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9136,
+     "s": 3.53
+    }
+   },
+   {
+    "S": 31.0,
+    "K": 1.184,
+    "lshade": {
+     "passed": false,
+     "LB": 0.8861,
+     "s": 19.5
+    },
+    "polish": {
+     "passed": false,
+     "LB": 0.8962,
+     "s": 3.89
+    }
+   },
+   {
+    "S": 30.0,
+    "K": 1.822,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9328,
+     "s": 19.64
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9323,
+     "s": 3.74
+    }
+   },
+   {
+    "S": 30.0,
+    "K": 2.803,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9053,
+     "s": 20.2
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9109,
+     "s": 7.07
+    }
+   },
+   {
+    "S": 28.0,
+    "K": 4.314,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9121,
+     "s": 13.94
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9121,
+     "s": 3.24
+    }
+   },
+   {
+    "S": 25.0,
+    "K": 6.638,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9166,
+     "s": 13.17
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9194,
+     "s": 2.02
+    }
+   },
+   {
+    "S": 20.0,
+    "K": 10.214,
+    "lshade": {
+     "passed": true,
+     "LB": 0.9108,
+     "s": 13.0
+    },
+    "polish": {
+     "passed": true,
+     "LB": 0.9134,
+     "s": 2.03
+    }
+   }
+  ],
+  "same_decisions": true,
+  "n_sample": 8,
+  "mode_used_for_rest": "polish"
+ },
+ "stopped": "converged: round 2 added 0 (<= 3)",
+ "gpu_peak": 74,
+ "pauses": [],
+ "total_seconds": 1957.2,
+ "budget_minutes": 60.0
+}

@@ -1,0 +1,115 @@
+{
+ "mode": "run",
+ "metrics": {
+  "n_pairs": 10096,
+  "brier": 0.0461454516933853,
+  "cal_intercept": -0.0928704448600212,
+  "cal_slope": 1.0058058015746367,
+  "n_accept": 504,
+  "accept_observed_rate": 0.9305555555555556,
+  "accept_mean_predicted": 0.9540583907491191
+ },
+ "accept_studies": 23,
+ "cluster_bootstrap": {
+  "slope": {
+   "lo95": 0.8764672648992098,
+   "hi95": 1.1732342615306308,
+   "lower5": 0.8970848610470457
+  },
+  "accept_rate": {
+   "lo95": 0.8823476890756302,
+   "hi95": 0.9620708691395627,
+   "lower5": 0.8909051210797936
+  },
+  "accept_gap": {
+   "lo95": -0.012085076723348692,
+   "hi95": 0.0722097735105923,
+   "lower5": -0.006465993984515023
+  }
+ },
+ "criteria": {
+  "C1a_slope_interval_overlaps_0.8_1.2": true,
+  "C1b_accept_lower5_ge_0.85": true,
+  "C1c_over_prediction_le_0.05": true
+ },
+ "bank_shift_by_fold": [
+  {
+   "fold": 0,
+   "bank_rows": 504,
+   "bank_rmse_CS": 2.9000315949003315,
+   "bank_rmse_CS_paper": 2.8726151914063363,
+   "bank_rmse_lnk": 0.30934442055846517,
+   "bank_rmse_lnk_paper": 0.31465481663051176,
+   "median_scale_ratio_CS": 1.081773532990745,
+   "median_scale_ratio_lnk": 1.054078925239799
+  },
+  {
+   "fold": 1,
+   "bank_rows": 504,
+   "bank_rmse_CS": 2.904618621919093,
+   "bank_rmse_CS_paper": 2.9403444153331146,
+   "bank_rmse_lnk": 0.28533052801196684,
+   "bank_rmse_lnk_paper": 0.2883658858479342,
+   "median_scale_ratio_CS": 1.1168551518545948,
+   "median_scale_ratio_lnk": 0.9373152445340736
+  },
+  {
+   "fold": 2,
+   "bank_rows": 505,
+   "bank_rmse_CS": 2.7686199994520466,
+   "bank_rmse_CS_paper": 2.6678833592936133,
+   "bank_rmse_lnk": 0.25678618421408655,
+   "bank_rmse_lnk_paper": 0.27364458677263903,
+   "median_scale_ratio_CS": 0.9454572895024304,
+   "median_scale_ratio_lnk": 0.8827593732661652
+  },
+  {
+   "fold": 3,
+   "bank_rows": 507,
+   "bank_rmse_CS": 2.312101902298214,
+   "bank_rmse_CS_paper": 2.257039981853672,
+   "bank_rmse_lnk": 0.3367379487628434,
+   "bank_rmse_lnk_paper": 0.3279593323213335,
+   "median_scale_ratio_CS": 0.9618538976168138,
+   "median_scale_ratio_lnk": 1.0943209013643735
+  },
+  {
+   "fold": 4,
+   "bank_rows": 504,
+   "bank_rmse_CS": 3.010216709105154,
+   "bank_rmse_CS_paper": 2.9676172119782427,
+   "bank_rmse_lnk": 0.3407927249503513,
+   "bank_rmse_lnk_paper": 0.33023049352549266,
+   "median_scale_ratio_CS": 1.08931262797586,
+   "median_scale_ratio_lnk": 1.1269591143011708
+  }
+ ],
+ "paper_audit": {
+  "metrics": {
+   "n_pairs": 10096,
+   "brier": 0.046101688562931245,
+   "cal_intercept": -0.11754111881954195,
+   "cal_slope": 1.0124949847077986,
+   "n_accept": 495,
+   "accept_observed_rate": 0.9353535353535354,
+   "accept_mean_predicted": 0.9563817940381335
+  },
+  "cluster_bootstrap": {
+   "slope": {
+    "lo95": 0.8800525919347063,
+    "hi95": 1.1852739528660732,
+    "lower5": 0.900125618846898
+   },
+   "accept_rate": {
+    "lo95": 0.8846743924933835,
+    "hi95": 0.9700514364517842,
+    "lower5": 0.8926311349693251
+   },
+   "accept_gap": {
+    "lo95": -0.015757140032125132,
+    "hi95": 0.07279123988543226,
+    "lower5": -0.010221062291125271
+   }
+  }
+ }
+}

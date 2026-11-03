@@ -1,0 +1,213 @@
+{
+ "lab": {
+  "B_std": [
+   [
+    0.19858157634735107,
+    -0.07986964285373688
+   ],
+   [
+    -0.07986964285373688,
+    0.3599594831466675
+   ]
+  ],
+  "sd_CS_mpa": 3.669256163240656,
+  "sd_lnk": 0.6945023172468081,
+  "corr": -0.2987345514617733
+ },
+ "hyper": {
+  "lengthscales": {
+   "shared_covar_module.data_covar_module.base_kernel.kernels.0": {
+    "dims": [
+     "porosity",
+     "w/c",
+     "cem (kg/m3)",
+     "CA (kg/m3)",
+     "SP (kg/m3)",
+     "sand (kg/m3)"
+    ],
+    "lengthscale": [
+     0.9409999847412109,
+     1.079300045967102,
+     2.217900037765503,
+     1.6682000160217285,
+     0.6201000213623047,
+     0.5800999999046326
+    ]
+   },
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1": {
+    "dims": [
+     "porosity",
+     "w/c",
+     "cem (kg/m3)",
+     "CA (kg/m3)",
+     "SP (kg/m3)",
+     "sand (kg/m3)",
+     "q10",
+     "q25",
+     "q50",
+     "q75",
+     "q90"
+    ],
+    "lengthscale": [
+     1.0211000442504883,
+     1.6390000581741333,
+     1.651900053024292,
+     0.2904999852180481,
+     1.0973000526428223,
+     0.40610000491142273,
+     2.2167000770568848,
+     2.2167000770568848,
+     2.2167000770568848,
+     2.2167000770568848,
+     2.2167000770568848
+    ]
+   },
+   "shared_covar_module.data_covar_module.base_kernel.kernels.2": {
+    "dims": [
+     "w/c",
+     "cem (kg/m3)",
+     "SP (kg/m3)"
+    ],
+    "lengthscale": [
+     0.5902000069618225,
+     2.2239999771118164,
+     1.0784000158309937
+    ]
+   },
+   "shared_covar_module.data_covar_module.base_kernel.kernels.3": {
+    "dims": [
+     "porosity",
+     "sand (kg/m3)"
+    ],
+    "lengthscale": [
+     1.506100058555603,
+     2.1451001167297363
+    ]
+   }
+  },
+  "other": {
+   "likelihood.raw_task_noises": [
+    -0.6641148328781128,
+    -2.139049768447876
+   ],
+   "likelihood.raw_task_noises_constraint.lower_bound": [
+    0.003000000026077032
+   ],
+   "likelihood.raw_task_noises_constraint.upper_bound": [
+    0.10000000149011612
+   ],
+   "likelihood.strength_task_noise_prior._buffered_loc": [
+    -3.6888794898986816
+   ],
+   "likelihood.strength_task_noise_prior._buffered_scale": [
+    0.3499999940395355
+   ],
+   "likelihood.perm_task_noise_prior._buffered_loc": [
+    -4.605170249938965
+   ],
+   "likelihood.perm_task_noise_prior._buffered_scale": [
+    0.3499999940395355
+   ],
+   "mean_module.strength_const": [
+    0.23675383627414703
+   ],
+   "mean_module.perm_const": [
+    -0.4935421049594879
+   ],
+   "mean_module.strength_const_prior.loc": [
+    0.0
+   ],
+   "mean_module.strength_const_prior.scale": [
+    1.0
+   ],
+   "mean_module.perm_const_prior.loc": [
+    0.0
+   ],
+   "mean_module.perm_const_prior.scale": [
+    1.0
+   ],
+   "shared_covar_module.task_covar_module.covar_factor": [
+    0.35601815581321716,
+    -0.28263527154922485
+   ],
+   "shared_covar_module.task_covar_module.raw_var": [
+    -1.3642641305923462,
+    -1.2471119165420532
+   ],
+   "shared_covar_module.task_covar_module.raw_var_constraint.lower_bound": [
+    0.0
+   ],
+   "shared_covar_module.task_covar_module.raw_var_constraint.upper_bound": [
+    Infinity
+   ],
+   "shared_covar_module.data_covar_module.raw_outputscale": [
+    -1.7942681312561035
+   ],
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1.raw_alpha": [
+    -6.334118366241455
+   ],
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1.raw_alpha_constraint.lower_bound": [
+    0.25
+   ],
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1.raw_alpha_constraint.upper_bound": [
+    10.0
+   ],
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1.alpha_prior.concentration": [
+    2.0
+   ],
+   "shared_covar_module.data_covar_module.base_kernel.kernels.1.alpha_prior.rate": [
+    1.0
+   ],
+   "shared_covar_module.data_covar_module.raw_outputscale_constraint.lower_bound": [
+    0.05000000074505806
+   ],
+   "shared_covar_module.data_covar_module.raw_outputscale_constraint.upper_bound": [
+    3.0
+   ],
+   "shared_covar_module.data_covar_module.outputscale_prior._buffered_loc": [
+    -0.2231435477733612
+   ],
+   "shared_covar_module.data_covar_module.outputscale_prior._buffered_scale": [
+    0.4000000059604645
+   ],
+   "lab_covar_module.task_covar_module.covar_factor": [
+    -0.10784134268760681,
+    -0.10784134268760681,
+    0.37031087279319763,
+    0.37031087279319763
+   ],
+   "lab_covar_module.task_covar_module.raw_var": [
+    -1.6521891355514526,
+    -2.4137561321258545
+   ],
+   "lab_covar_module.task_covar_module.raw_var_constraint.lower_bound": [
+    0.0
+   ],
+   "lab_covar_module.task_covar_module.raw_var_constraint.upper_bound": [
+    Infinity
+   ],
+   "raw_task_noises": [
+    -0.6641148328781128,
+    -2.139049768447876
+   ],
+   "raw_task_noises_constraint.lower_bound": [
+    0.003000000026077032
+   ],
+   "raw_task_noises_constraint.upper_bound": [
+    0.10000000149011612
+   ],
+   "strength_task_noise_prior._buffered_loc": [
+    -3.6888794898986816
+   ],
+   "strength_task_noise_prior._buffered_scale": [
+    0.3499999940395355
+   ],
+   "perm_task_noise_prior._buffered_loc": [
+    -4.605170249938965
+   ],
+   "perm_task_noise_prior._buffered_scale": [
+    0.3499999940395355
+   ]
+  }
+ }
+}
