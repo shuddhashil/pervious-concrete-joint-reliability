@@ -1,5 +1,7 @@
 # Joint-reliability inverse design of low-cement pervious concrete
 
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23948289.svg)](https://doi.org/10.5281/zenodo.23948289)
+
 Code, data and result files for the manuscript *Joint-Reliability Inverse Design of Low-Cement Pervious Concrete Using a Laboratory-Adaptive Gaussian Process*.
 
 The framework does four things:
@@ -93,7 +95,7 @@ Sources: the `minutes` field of `results/forward_model_folds/*.json`, the `secon
 
 ## Citation
 
-See `CITATION.cff`. An archived release with a DOI is on Zenodo (DOI added at release).
+See `CITATION.cff`. Archived on Zenodo: version v1.0.0, https://doi.org/10.5281/zenodo.23948289 (all versions: https://doi.org/10.5281/zenodo.23948288).
 
 ## Data
 
