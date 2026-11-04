@@ -3,14 +3,14 @@ Reads the original Stage-17 code unchanged; only the frame loader is swapped for
 Representation x_raw (the one the deployed bundle uses). Output: hdr_detail.csv with 'covered' per held-out row; zone table by observed porosity."""
 import json, os, sys, time
 sys.dont_write_bytecode = True
-RES = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research"
-S17 = RES + "/Stage17_Direct_Local_Recipe_Porosity_Support_20260918"
 HERE = os.path.dirname(os.path.abspath(__file__)); OUT = os.path.join(HERE, "outputs")
-sys.path.insert(0, S17 + "/src")
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+S17 = os.path.join(REPO, "inputs", "run_window_cv")
+sys.path.insert(0, os.path.join(S17, "src"))
 import numpy as np, pandas as pd
 import run_cv as R, data_contract as DC
 BINS = ['R25-19mm', 'R19-12.5mm', 'R12.5-9.5mm', 'R9.5-6.3mm', 'R6.3-4.75mm', 'R4.75-2.36mm']
-CSV = RES + "/GuidedEngine_20261003/base/core/data_inputs/phase1_reconciled_eligible.csv"
+CSV = os.path.join(REPO, "code", "04_design_engine", "engine", "base", "core", "data_inputs", "phase1_reconciled_eligible.csv")
 def load_frame_from_csv(path):  # copied from GuidedEngine tools/build_s17.py
     d = pd.read_csv(path); G = d[BINS].to_numpy(float) / 100.0; assert np.allclose(G.sum(1), 1.0, atol=1e-9)
     fr = pd.DataFrame({'pos': np.arange(len(d)), 'study': d['_src_ffill'].astype(str).to_numpy(), 'phi': d['porosity'].to_numpy(float), 'w/c': d['w/c'].to_numpy(float),

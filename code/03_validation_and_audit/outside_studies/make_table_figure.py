@@ -5,9 +5,9 @@ import json, os, numpy as np, pandas as pd
 import matplotlib; matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 HERE = os.path.dirname(os.path.abspath(__file__))
-ROOT = "C:/Users/Shuddhashil/Desktop"
-OUT = f"{ROOT}/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_lab/out_lab"
-AN = f"{ROOT}/Local-Agent-Team/Papers/MixDesign_Paper/analysis"
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+OUT = os.path.join(REPO, "results", "forward_model_folds", "lab_effect")
+AN = os.path.join(REPO, "results")
 
 
 def pool(prefix):
@@ -36,8 +36,8 @@ for mode, pre in (("new lab", "labgrp_newlab_split"), ("3 nearest", "labgrp_near
     add("Within the 631-record data", "Study-grouped 5-fold", mode, stats(yc, pc), stats(yk, pk))
 
 # outside studies
-own = pd.read_csv(f"{AN}/own_papers_validation_2026-10-26/pred_mould.csv")
-bk = pd.read_csv(f"{AN}/book1_validation_2026-10-27/pred_book1.csv"); bk = bk[bk.lab != "Sonebi"]
+own = pd.read_csv(os.path.join(AN, "outside_studies", "pred_mould.csv"))
+bk = pd.read_csv(os.path.join(AN, "outside_studies", "pred_book1.csv")); bk = bk[bk.lab != "Sonebi"]
 c = ["lab", "cs", "k", "cs_pred_newlab", "lnk_pred_newlab", "cs_pred_near3", "lnk_pred_near3"]
 A = pd.concat([own[c], bk[c]], ignore_index=True)
 NAMES = {"TiDE": "Ghosh et al. (2026)", "RIENGG": "Ghosh and Singh (2026a)", "Mahalingam": "Mahalingam and Mahalingam (2016)", "Meininger": "Meininger (1988)"}

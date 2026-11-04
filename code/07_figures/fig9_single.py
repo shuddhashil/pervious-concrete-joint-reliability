@@ -1,9 +1,10 @@
 """V5 Figure 9 (2026-10-30): COPY of figures/v4/fig14_alternatives.py with panel (a) only (panel (b) removed); same data.
 Original: V4 Figure 14: held-out reliability audit under alternative trial-batch choices (a) and coupled vs independent models (b).
 Data: SirReview_MTvsIND_20261029/work/audit/pairs_<model>_<protocol>_paired.csv (P = stated, O = observed)."""
-import glob, numpy as np, pandas as pd, matplotlib
+import glob, os, numpy as np, pandas as pd, matplotlib
 matplotlib.use("Agg"); import matplotlib.pyplot as plt
-A = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/SirReview_MTvsIND_20261029/work/audit"
+HERE = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(HERE))
+A = os.path.join(REPO, "results", "audit", "pairs")
 plt.rcParams.update({"font.family": "Arial", "font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
 EDGES = [0, .1, .3, .5, .7, .8, .9, .95, 1.0001]
 load = lambda pat: pd.concat([pd.read_csv(f) for f in sorted(glob.glob(f"{A}/{pat}"))])

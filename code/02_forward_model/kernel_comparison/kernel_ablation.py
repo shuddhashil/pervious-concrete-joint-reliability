@@ -5,8 +5,8 @@ usage: python kernel_ablation.py VARIANT SPLIT   |   python kernel_ablation.py -
 Output: fits/<variant>_split<k>.json (predictions + metrics). Reference (deployed) split fits already exist in the A3-1 retrain folder."""
 import json, os, sys, time
 sys.dont_write_bytecode = True
-RES = r"C:\Users\Shuddhashil\Desktop\Mix Design Paper Rebuild\research"
-sys.path.insert(0, RES + r"\LCMGP_Retrain_A3-1_20261003")
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+sys.path.insert(0, os.path.join(REPO, "code", "02_forward_model"))
 import numpy as np, torch, gpytorch
 import retrain as R
 L = R.L

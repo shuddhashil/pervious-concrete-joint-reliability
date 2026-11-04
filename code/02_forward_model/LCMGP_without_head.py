@@ -1,4 +1,5 @@
 import os, json, time, random, argparse, copy, math, py_compile, re
+from pathlib import Path
 import numpy as np, pandas as pd
 import matplotlib
 matplotlib.use('Agg')
@@ -9,7 +10,7 @@ from gpytorch.priors import LogNormalPrior, GammaPrior, NormalPrior
 from gpytorch.constraints import Interval
 PERM_COL = 'perm (mm/s)'
 STRENGTH_COL = 'comp_converted'
-DEFAULT_DATA_PATH = r'C:\Users\Shuddhashil\Desktop\Final files\DATASET2.xlsx'
+DEFAULT_DATA_PATH = str(Path(__file__).resolve().parents[2] / "data" / "data_with_passing_sizes.xlsx")
 GRADATION_COLS = [
     'R25-19mm',
     'R19-12.5mm',

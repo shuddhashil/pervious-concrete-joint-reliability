@@ -5,7 +5,11 @@ Model = the saved full-data lab-effect fit (631 records), untouched. Two ways to
 usage: python -I predict_own.py [--scale closure|density|mould] [--volume 1.0] [--sand-reading coarse|total] [--dgrade renorm|lastbin] [--onelab] [--tag NAME]
 writes pred_<tag>.csv and out_<tag>.json next to this file."""
 import sys, os, json, math, argparse
-KIT = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_kit"
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+KIT = os.path.join(REPO, "code", "02_forward_model")
+DATA = os.path.join(REPO, "data")
+OUTSIDE = os.path.join(DATA, "outside_studies")
 sys.path.insert(0, KIT); sys.dont_write_bytecode = True
 import numpy as np, pandas as pd, torch
 import robust_fits as RF
@@ -15,8 +19,7 @@ ap = argparse.ArgumentParser()
 ap.add_argument("--scale", default="closure"); ap.add_argument("--volume", type=float, default=1.0); ap.add_argument("--sand-reading", default="coarse")
 ap.add_argument("--dgrade", default="renorm"); ap.add_argument("--tie", default="mid"); ap.add_argument("--flip-tide", action="store_true"); ap.add_argument("--onelab", action="store_true"); ap.add_argument("--tag", default="")
 a = ap.parse_args()
-HERE = os.path.dirname(os.path.abspath(__file__))
-CK = torch.load("C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_lab/out_lab/fulldata_Q5a3_lab.pt", weights_only=False)
+CK = torch.load(os.path.join(REPO, "results", "forward_model_folds", "lab_effect", "fulldata_Q5a3_lab.pt"), weights_only=False)
 feats, groups, X631, yS, yP, st = RF.frame()      # activates Q5a3 (11 inputs) and loads the 631 training rows
 assert list(CK["features"]) == list(L.FEATURES), (CK["features"], L.FEATURES)
 ASC = np.log2(np.array([2.36, 4.75, 6.3, 9.5, 12.5, 19.0, 25.0]))
@@ -42,7 +45,7 @@ def qs(bins_pct, tie=None):
 
 
 # sanity: the helper reproduces the q columns of the training sheet (left or right end at the exact-tie rows)
-tr = pd.read_excel(os.path.join(KIT, "data_with_passing_sizes.xlsx"))
+tr = pd.read_excel(os.path.join(DATA, "data_with_passing_sizes.xlsx"))
 bad = 0
 for i in range(631):
     y = tr.loc[i, ["q10", "q25", "q50", "q75", "q90"]].astype(float).values
@@ -72,7 +75,7 @@ def six_bins(lab, r):
 
 
 SG = dict(TiDE=2.824, A=2.901, B=2.912, C=2.917, D=2.918)
-raw = pd.read_csv(os.path.join(HERE, "own_papers_raw.csv"))
+raw = pd.read_csv(os.path.join(OUTSIDE, "own_papers_raw.csv"))
 rows = []
 for _, r in raw.iterrows():
     lab = r.lab

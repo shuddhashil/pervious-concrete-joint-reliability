@@ -4,13 +4,14 @@ one line per step with the elapsed minutes. Before the steps sets GENGINE_BASE /
 After the last step zips supportmap_v3 (everything except inputs/ and old_code/) to /content/results/map_v3_results.zip when /content exists, else supportmap_v3/map_v3_results.zip.
 usage: python run_map.py   (env MAP_REFINE_MIN = refinement budget in minutes, default 60)"""
 import sys, os, time, zipfile, subprocess
-SM = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); ROOT = os.path.dirname(SM); L3 = os.path.join(SM, "logs_v3")
+SM = os.path.dirname(os.path.dirname(os.path.abspath(__file__))); ROOT = os.path.dirname(SM); RUNS = os.path.join(ROOT, "runs")
+L3 = os.path.join(SM, "logs_v3") if os.path.isdir("/content") else os.path.join(RUNS, "logs_v3")
 STEPS = ["prep_target", "harvest_six", "rescore", "classify0", "run_refine", "run_final_prep", "run_certs_v2", "fix_monotone", "islands", "assemble_v3", "make_figure_v3"]
 
 
 def zip_results():
     """zip supportmap_v3 except inputs/ and old_code/ (the archive itself is never added)."""
-    dest = os.path.join("/content", "results", "map_v3_results.zip") if os.path.isdir("/content") else os.path.join(SM, "map_v3_results.zip")
+    dest = os.path.join("/content", "results", "map_v3_results.zip") if os.path.isdir("/content") else os.path.join(RUNS, "map_v3_results.zip")
     os.makedirs(os.path.dirname(dest), exist_ok=True); n = 0
     with zipfile.ZipFile(dest, "w", zipfile.ZIP_DEFLATED) as z:
         for root, dirs, files in os.walk(SM):

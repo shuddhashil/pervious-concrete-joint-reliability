@@ -2,13 +2,15 @@
 Rule fixed before any prediction: every source's stated aggregate range is spread uniformly in log size, exactly as for the two own papers.
 usage: python -I build_inputs.py   -> book1_inputs.csv"""
 import sys, os, math
-KIT = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_kit"
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+KIT = os.path.join(REPO, "code", "02_forward_model")
+DATA = os.path.join(REPO, "data", "outside_studies")
 sys.path.insert(0, KIT); sys.dont_write_bytecode = True
 import numpy as np, pandas as pd, openpyxl, torch
 import robust_fits as RF
 R, L = RF.R, RF.L
-HERE = os.path.dirname(os.path.abspath(__file__))
-CK = torch.load("C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_lab/out_lab/fulldata_Q5a3_lab.pt", weights_only=False)
+CK = torch.load(os.path.join(REPO, "results", "forward_model_folds", "lab_effect", "fulldata_Q5a3_lab.pt"), weights_only=False)
 ASC = np.log2(np.array([2.36, 4.75, 6.3, 9.5, 12.5, 19.0, 25.0]))
 EDGES = [2.36, 4.75, 6.3, 9.5, 12.5, 19.0, 25.0]     # six bins, coarse -> fine: 19-25, 12.5-19, 9.5-12.5, 6.3-9.5, 4.75-6.3, 2.36-4.75
 
@@ -40,7 +42,7 @@ def uniform_bins(lo, hi):
 
 RANGE = {"Mahalingam": {"S1": (4.75, 9.5), "S2": (9.5, 12.5)}, "Sonebi": (10.0, 20.0), "Meininger": (2.36, 9.5)}
 
-ws = openpyxl.load_workbook(os.path.join(HERE, "Book1.xlsx"), data_only=True)["Sheet1"]
+ws = openpyxl.load_workbook(os.path.join(DATA, "Book1.xlsx"), data_only=True)["Sheet1"]
 rows, lab = [], None
 for r in range(4, 40):
     idv, agg = ws.cell(r, 3).value, ws.cell(r, 4).value
@@ -67,7 +69,7 @@ Xm = L._apply_feature_transforms(X[L.FEATURES]).to_numpy(float)
 lo_t, hi_t = Xt.min(0), Xt.max(0)
 D["outside_training_range"] = [", ".join(f for f, v, a, b in zip(feats, row, lo_t, hi_t) if v < a - 1e-9 or v > b + 1e-9) for row in Xm]
 D["cs_ok_range"] = (D.cs >= 1.06) & (D.cs <= 68.8)
-D.to_csv(os.path.join(HERE, "book1_inputs.csv"), index=False)
+D.to_csv(os.path.join(DATA, "book1_inputs.csv"), index=False)
 pd.set_option("display.width", 250, "display.max_columns", 40)
 print(D[["lab", "id", "porosity", "wc", "cem", "CA", "SP", "q10", "q50", "q90", "cs", "k", "outside_training_range"]].round(3).to_string())
 print(D.groupby("lab").size().to_dict())

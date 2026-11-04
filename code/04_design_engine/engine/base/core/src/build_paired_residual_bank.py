@@ -28,17 +28,18 @@ import hashlib
 import json
 import os
 import sys
+from pathlib import Path
 
 import numpy as np
 import pandas as pd
 
-ROOT = r"C:\Users\Shuddhashil\Desktop\Mix Design Paper Rebuild"
-REFIT_RUN = os.path.join(ROOT, "research", "Stage1_CA_Forward_Refit_20260913", "run_01")
-RUN = os.path.join(ROOT, "research", "Stage1_1813_90_Robust_20260915", "run_02")
+REPO = Path(__file__).resolve().parents[6]
+INPUT = REPO / "inputs" / "build_paired_residual_bank"
+RUN = INPUT / "run_02"
 
-RESID_CSV = os.path.join(REFIT_RUN, "models", "oos_residual_reference_M1global.csv")
-SCALES_CSV = os.path.join(REFIT_RUN, "models", "oos_production_scales_M1global.csv")
-JOINT_BUNDLE_JSON = os.path.join(REFIT_RUN, "models", "joint_bundle_M1global.json")
+RESID_CSV = INPUT / "oos_residual_reference_M1global.csv"
+SCALES_CSV = INPUT / "oos_production_scales_M1global.csv"
+JOINT_BUNDLE_JSON = INPUT / "joint_bundle_M1global.json"
 
 
 def sha256_file(path):

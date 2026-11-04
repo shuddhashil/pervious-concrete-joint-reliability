@@ -6,7 +6,7 @@ import sys
 from pathlib import Path
 import pandas as pd
 sys.dont_write_bytecode = True
-sys.path.insert(0, "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/CalibrationAudit_A3-1_20261005")
+sys.path.insert(0, str(Path(__file__).resolve().parents[3] / "code" / "03_validation_and_audit" / "audit_code"))
 import heldout_porosity_conditional as P
 H = P.H; M = Path(sys.argv[1]) / "core" / "models"; out = Path(sys.argv[2])
 H.MODELS = M; H.load_data.__defaults__ = (M,)

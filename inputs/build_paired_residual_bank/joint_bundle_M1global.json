@@ -1,0 +1,23 @@
+{
+ "method": "paired_max_score",
+ "scope": "pooled_repeated_split_oos_M1global_10D",
+ "independent_validation_estimate": false,
+ "scales": "production effective (max(raw,local10,same-row-excluded) x ADinfl)",
+ "levels": {
+  "0.8": {
+   "q": 0.8932689295252731,
+   "k": 521,
+   "n_cal": 650
+  },
+  "0.9": {
+   "q": 1.2724972483491481,
+   "k": 586,
+   "n_cal": 650
+  },
+  "0.95": {
+   "q": 1.691623650616273,
+   "k": 619,
+   "n_cal": 650
+  }
+ }
+}

@@ -10,7 +10,7 @@ separate rule gets the strict final evaluation (cert.verify_design_cfg, nominal 
 usage (env GENGINE_BASE / GENGINE_CONFIG set to the target copy): python sep_eval.py <logs_root_for_this_target> <out_json>"""
 import os, sys, json, glob, time, math
 sys.dont_write_bytecode = True
-ROOT = os.environ.get("GENGINE_ROOT", "/content/GuidedEngine_20261003"); sys.path.insert(0, ROOT)
+J = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(J)); ROOT = os.environ.get("GENGINE_ROOT", os.path.join(REPO, "code", "04_design_engine", "engine")); sys.path.insert(0, ROOT)
 import numpy as np, torch
 from gengine.common import C, T, decode, nom_dicts, SHIFT_LABELS, gpu_lb
 from gengine import config, cert

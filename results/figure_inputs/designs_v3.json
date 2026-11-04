@@ -1,0 +1,780 @@
+{
+ "S10_K8_R0.90": {
+  "n_certified_nominal": 19,
+  "lowest": {
+   "cid": "G3_57c7a5e9ec9132",
+   "C": 221.0,
+   "R_min": 0.9237389685294459,
+   "seed": 0,
+   "family": 2,
+   "parent": "u23",
+   "source": "recorded",
+   "nominal": {
+    "C": 221.0,
+    "r": 0.2936963617125,
+    "A": 1625.045555950436,
+    "P": 1.92249173345042,
+    "S": 0.0,
+    "phi": 23.753007348854936,
+    "g": [
+     0.0,
+     0.0,
+     0.0,
+     0.5111097530688764,
+     0.3796665124258618,
+     0.10922373450526181
+    ]
+   }
+  },
+  "all": [
+   {
+    "cid": "G3_57c7a5e9ec9132",
+    "C": 221.0,
+    "R_min": 0.9237389685294459,
+    "seed": 0,
+    "family": 2,
+    "parent": "u23",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_28fd726ad09be0",
+    "C": 221.0,
+    "R_min": 0.9246139707339515,
+    "seed": 1,
+    "family": 2,
+    "parent": "u23",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_0539ab7bbd6784",
+    "C": 221.0,
+    "R_min": 0.909668501547627,
+    "seed": 2,
+    "family": 2,
+    "parent": "u23",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_7168621b7429dc",
+    "C": 230.0,
+    "R_min": 0.9375283639538414,
+    "seed": 0,
+    "family": 2,
+    "parent": "g245_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_e07e485fca87fd",
+    "C": 230.0,
+    "R_min": 0.926688541856074,
+    "seed": 1,
+    "family": 2,
+    "parent": "g245_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_56e2bdf3b88823",
+    "C": 230.0,
+    "R_min": 0.9286685463224895,
+    "seed": 2,
+    "family": 2,
+    "parent": "g245_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_bef331d17605be",
+    "C": 237.5,
+    "R_min": 0.9057011530105524,
+    "seed": 2,
+    "family": 1,
+    "parent": "g250_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_c77ac5d06d62c9",
+    "C": 240.25,
+    "R_min": 0.9032277863128493,
+    "seed": 0,
+    "family": 1,
+    "parent": "g260_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_beb3e26ea067ee",
+    "C": 246.25,
+    "R_min": 0.904470939279732,
+    "seed": 1,
+    "family": 1,
+    "parent": "g255_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_2efd9bc2180ec4",
+    "C": 251.0,
+    "R_min": 0.9055506594304389,
+    "seed": 1,
+    "family": 1,
+    "parent": "u199",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_ed9ba5ba477f74",
+    "C": 255.5,
+    "R_min": 0.9077527818179427,
+    "seed": 2,
+    "family": 1,
+    "parent": "u362",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_2feb437202df18",
+    "C": 256.7,
+    "R_min": 0.9043274404096835,
+    "seed": 0,
+    "family": 1,
+    "parent": "u415",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_2743a0c13e8a05",
+    "C": 261.5,
+    "R_min": 0.9048147584782609,
+    "seed": 0,
+    "family": 0,
+    "parent": "g320_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_d452e55d792744",
+    "C": 268.75,
+    "R_min": 0.9109939984691473,
+    "seed": 2,
+    "family": 0,
+    "parent": "g280_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_9e0d7b682ce835",
+    "C": 271.5,
+    "R_min": 0.9028454777837115,
+    "seed": 1,
+    "family": 0,
+    "parent": "g275_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_ab4fd12fcb4f72",
+    "C": 286.0,
+    "R_min": 0.9528347060996203,
+    "seed": 1,
+    "family": 0,
+    "parent": "u288",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_e3b5a3bde6355b",
+    "C": 287.65,
+    "R_min": 0.9580650999298739,
+    "seed": 2,
+    "family": 0,
+    "parent": "u400",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_902d3807412427",
+    "C": 293.0,
+    "R_min": 0.9473785208516242,
+    "seed": 0,
+    "family": 0,
+    "parent": "u288",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_72b7c1d991ece9",
+    "C": 370.0,
+    "R_min": 0.9033699865898894,
+    "seed": 1,
+    "family": 0,
+    "parent": "u431",
+    "source": "recorded"
+   }
+  ]
+ },
+ "S14_K6_R0.90": {
+  "n_certified_nominal": 18,
+  "lowest": {
+   "cid": "G3_c5c1f925868f01",
+   "C": 259.0,
+   "R_min": 0.903601142773208,
+   "seed": 2,
+   "family": 2,
+   "parent": "g275_s2",
+   "source": "global",
+   "nominal": {
+    "C": 259.0,
+    "r": 0.273649614822783,
+    "A": 1591.5249491377535,
+    "P": 1.8785061942215124,
+    "S": 0.0,
+    "phi": 22.066919258351113,
+    "g": [
+     0.014952801989844824,
+     0.006360076640256209,
+     0.015910281650043753,
+     0.3450874756223617,
+     0.48002815364944235,
+     0.13766121044805119
+    ]
+   }
+  },
+  "all": [
+   {
+    "cid": "G3_c5c1f925868f01",
+    "C": 259.0,
+    "R_min": 0.903601142773208,
+    "seed": 2,
+    "family": 2,
+    "parent": "g275_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_5f72e74f630184",
+    "C": 265.0,
+    "R_min": 0.905141231280985,
+    "seed": 0,
+    "family": 2,
+    "parent": "g270_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_205c2e5f37676b",
+    "C": 267.75,
+    "R_min": 0.9030759889069264,
+    "seed": 1,
+    "family": 2,
+    "parent": "g275_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_a49bfed96b4efa",
+    "C": 280.0,
+    "R_min": 0.9029012328395062,
+    "seed": 1,
+    "family": 1,
+    "parent": "g280_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_9071f05bc050fd",
+    "C": 280.25,
+    "R_min": 0.9118047982877555,
+    "seed": 0,
+    "family": 2,
+    "parent": "u290",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_2ad97ff2afa799",
+    "C": 280.5,
+    "R_min": 0.9080264936165404,
+    "seed": 1,
+    "family": 2,
+    "parent": "u241",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_aa0bf5ef52c01d",
+    "C": 280.5,
+    "R_min": 0.9041798906444907,
+    "seed": 2,
+    "family": 1,
+    "parent": "g300_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_1de7768de34ed2",
+    "C": 281.5,
+    "R_min": 0.905175207815735,
+    "seed": 2,
+    "family": 2,
+    "parent": "u290",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_807260b11ca044",
+    "C": 290.0,
+    "R_min": 0.9045844109884191,
+    "seed": 0,
+    "family": 0,
+    "parent": "u474",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_2ef366a26e167e",
+    "C": 292.5,
+    "R_min": 0.9075105992144807,
+    "seed": 2,
+    "family": 0,
+    "parent": "u474",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_9785f7cdb1ac10",
+    "C": 293.1,
+    "R_min": 0.9052881294524189,
+    "seed": 2,
+    "family": 1,
+    "parent": "u358",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_3407b5dbb92e98",
+    "C": 295.0,
+    "R_min": 0.9214917641625616,
+    "seed": 0,
+    "family": 1,
+    "parent": "g300_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_6c644cf3814111",
+    "C": 308.75,
+    "R_min": 0.9064986840637047,
+    "seed": 1,
+    "family": 0,
+    "parent": "u474",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_ba7c9aec97c94c",
+    "C": 309.1,
+    "R_min": 0.9501258407079645,
+    "seed": 1,
+    "family": 1,
+    "parent": "u358",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_931fa3c69f05b7",
+    "C": 318.1,
+    "R_min": 0.9555304902772342,
+    "seed": 0,
+    "family": 1,
+    "parent": "u358",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_3ad43629758258",
+    "C": 327.75,
+    "R_min": 0.9029378895424132,
+    "seed": 1,
+    "family": 0,
+    "parent": "g335_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_0f0efb86926027",
+    "C": 332.5,
+    "R_min": 0.904722914560567,
+    "seed": 0,
+    "family": 0,
+    "parent": "g335_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_8717a94f406a28",
+    "C": 339.0,
+    "R_min": 0.9035589833841463,
+    "seed": 2,
+    "family": 0,
+    "parent": "g340_s2",
+    "source": "global"
+   }
+  ]
+ },
+ "S16_K10_R0.90": {
+  "n_certified_nominal": 18,
+  "lowest": {
+   "cid": "G3_5229ef521631b1",
+   "C": 316.25,
+   "R_min": 0.9083734312895463,
+   "seed": 0,
+   "family": 2,
+   "parent": "g320_s0",
+   "source": "global",
+   "nominal": {
+    "C": 316.25,
+    "r": 0.27081758651684423,
+    "A": 1622.637923086777,
+    "P": 1.8717365957882057,
+    "S": 0.04562326860576223,
+    "phi": 22.547924265587476,
+    "g": [
+     0.016248353084184805,
+     0.011190772046229484,
+     0.035339071131699894,
+     0.6003608728387924,
+     0.16854560296787108,
+     0.16831532793122242
+    ]
+   }
+  },
+  "all": [
+   {
+    "cid": "G3_5229ef521631b1",
+    "C": 316.25,
+    "R_min": 0.9083734312895463,
+    "seed": 0,
+    "family": 2,
+    "parent": "g320_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_3a0d28ee28211f",
+    "C": 318.75,
+    "R_min": 0.9066860660724005,
+    "seed": 1,
+    "family": 2,
+    "parent": "g320_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_0cdf6f8803b55b",
+    "C": 320.0,
+    "R_min": 0.9084217025963808,
+    "seed": 2,
+    "family": 2,
+    "parent": "u39",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_feba090a6bc08a",
+    "C": 322.5,
+    "R_min": 0.9130979202679343,
+    "seed": 2,
+    "family": 2,
+    "parent": "g340_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_d3bdd056979fa5",
+    "C": 327.75,
+    "R_min": 0.9196626232092163,
+    "seed": 1,
+    "family": 2,
+    "parent": "u290",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_ae38df05c7fbba",
+    "C": 331.0,
+    "R_min": 0.905876483706623,
+    "seed": 0,
+    "family": 2,
+    "parent": "u63",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_9a5c38062fbe2e",
+    "C": 333.75,
+    "R_min": 0.912930985047987,
+    "seed": 1,
+    "family": 1,
+    "parent": "g340_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_cdc4c6b4429d11",
+    "C": 335.0,
+    "R_min": 0.9084674178298439,
+    "seed": 2,
+    "family": 1,
+    "parent": "g340_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_59eaf91195a4d0",
+    "C": 337.5,
+    "R_min": 0.906682345463609,
+    "seed": 0,
+    "family": 1,
+    "parent": "g360_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_b6923d188a9e88",
+    "C": 338.0,
+    "R_min": 0.9016966832390018,
+    "seed": 0,
+    "family": 0,
+    "parent": "g380_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_f4bcf1b7102a7c",
+    "C": 340.0,
+    "R_min": 0.9050667317219188,
+    "seed": 2,
+    "family": 0,
+    "parent": "g340_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_3adf4c5b39b2c6",
+    "C": 352.75,
+    "R_min": 0.9017084278368689,
+    "seed": 1,
+    "family": 0,
+    "parent": "g360_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_b0817efe0460fa",
+    "C": 367.85,
+    "R_min": 0.9090086720682828,
+    "seed": 1,
+    "family": 1,
+    "parent": "u358",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_77989f7074efdb",
+    "C": 368.2,
+    "R_min": 0.9026917749262466,
+    "seed": 2,
+    "family": 1,
+    "parent": "u415",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_d9d412a20f7c97",
+    "C": 371.7,
+    "R_min": 0.9047364693820581,
+    "seed": 0,
+    "family": 1,
+    "parent": "u415",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_2994a892b1aa97",
+    "C": 372.75,
+    "R_min": 0.9035239990542705,
+    "seed": 0,
+    "family": 0,
+    "parent": "u289",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_838056f663a033",
+    "C": 372.75,
+    "R_min": 0.905093788377193,
+    "seed": 1,
+    "family": 0,
+    "parent": "u289",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_99bb6592911313",
+    "C": 375.25,
+    "R_min": 0.9057374945652175,
+    "seed": 2,
+    "family": 0,
+    "parent": "u289",
+    "source": "recorded"
+   }
+  ]
+ },
+ "S18_K13_R0.90": {
+  "n_certified_nominal": 0,
+  "lowest": null,
+  "all": []
+ },
+ "S20_K4_R0.90": {
+  "n_certified_nominal": 17,
+  "lowest": {
+   "cid": "G3_d7b2af33c860d8",
+   "C": 318.75,
+   "R_min": 0.9057623596899901,
+   "seed": 1,
+   "family": 2,
+   "parent": "g355_s1",
+   "source": "global",
+   "nominal": {
+    "C": 318.75,
+    "r": 0.27148713385451473,
+    "A": 1586.3042176382396,
+    "P": 1.8323276303487077,
+    "S": 0.0,
+    "phi": 20.11009742866442,
+    "g": [
+     0.014402792607567492,
+     0.009632159606139033,
+     0.010057554473222218,
+     0.5117853414993054,
+     0.277256506059432,
+     0.1768656457543339
+    ]
+   }
+  },
+  "all": [
+   {
+    "cid": "G3_d7b2af33c860d8",
+    "C": 318.75,
+    "R_min": 0.9057623596899901,
+    "seed": 1,
+    "family": 2,
+    "parent": "g355_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_6409a73c27ab00",
+    "C": 319.0,
+    "R_min": 0.9029679853413656,
+    "seed": 0,
+    "family": 2,
+    "parent": "g345_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_1858a83b2a700c",
+    "C": 320.25,
+    "R_min": 0.9039164776929167,
+    "seed": 0,
+    "family": 2,
+    "parent": "u124",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_f6e9287b15ff4d",
+    "C": 320.25,
+    "R_min": 0.9069151511245859,
+    "seed": 2,
+    "family": 2,
+    "parent": "u124",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_67cfaf47b0ac7d",
+    "C": 328.0,
+    "R_min": 0.905555231593676,
+    "seed": 1,
+    "family": 2,
+    "parent": "u241",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_6e001f56264b9b",
+    "C": 334.0,
+    "R_min": 0.9043658705882355,
+    "seed": 2,
+    "family": 2,
+    "parent": "g380_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_81d034dfe6a7b6",
+    "C": 348.75,
+    "R_min": 0.9130888841266802,
+    "seed": 2,
+    "family": 1,
+    "parent": "g365_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_e12ad9164823c7",
+    "C": 351.25,
+    "R_min": 0.9175895722634915,
+    "seed": 1,
+    "family": 1,
+    "parent": "g370_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_5a01716ebaddb6",
+    "C": 355.0,
+    "R_min": 0.9143730438281458,
+    "seed": 0,
+    "family": 1,
+    "parent": "g365_s0",
+    "source": "global"
+   },
+   {
+    "cid": "G3_29f8db173e0614",
+    "C": 362.75,
+    "R_min": 0.9117485084976328,
+    "seed": 2,
+    "family": 0,
+    "parent": "u529",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_0f90d7639aa97c",
+    "C": 364.75,
+    "R_min": 0.9053648119195957,
+    "seed": 1,
+    "family": 1,
+    "parent": "u472",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_15cd0299e66cb1",
+    "C": 368.25,
+    "R_min": 0.9051482528409092,
+    "seed": 2,
+    "family": 1,
+    "parent": "u472",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_a6e2bbbc269170",
+    "C": 376.25,
+    "R_min": 0.9207006211180124,
+    "seed": 1,
+    "family": 0,
+    "parent": "g435_s1",
+    "source": "global"
+   },
+   {
+    "cid": "G3_005e6e6109e02a",
+    "C": 378.25,
+    "R_min": 0.9055647493773946,
+    "seed": 0,
+    "family": 1,
+    "parent": "u472",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_038d4d981a031d",
+    "C": 382.5,
+    "R_min": 0.9434008672598936,
+    "seed": 1,
+    "family": 0,
+    "parent": "u534",
+    "source": "recorded"
+   },
+   {
+    "cid": "G3_fa19a66a7cba9c",
+    "C": 382.5,
+    "R_min": 0.9037152710236265,
+    "seed": 2,
+    "family": 0,
+    "parent": "g440_s2",
+    "source": "global"
+   },
+   {
+    "cid": "G3_c238e5d1276f98",
+    "C": 421.75,
+    "R_min": 0.9700153632253323,
+    "seed": 0,
+    "family": 0,
+    "parent": "u529",
+    "source": "recorded"
+   }
+  ]
+ },
+ "S25_K13_R0.90": {
+  "n_certified_nominal": 0,
+  "lowest": null,
+  "all": []
+ }
+}

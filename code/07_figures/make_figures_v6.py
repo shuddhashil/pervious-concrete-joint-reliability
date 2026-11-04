@@ -8,10 +8,10 @@ from matplotlib.lines import Line2D
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 OUT = os.path.join(HERE, "..", "..", "figures", "results", "v6"); os.makedirs(OUT, exist_ok=True)
-RES = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research"
-CORE = RES + "/RobustEngine_20261022/GuidedEngine_20261003/base/core"
-AUD = RES + "/RobustnessTests_20261021/results/audit_LNI"; LAB = RES + "/RobustnessTests_20261021/colab_lab/out_lab"
-TAB = RES + "/RobustEngine_Results_20261022/tables"
+REPO = os.path.dirname(os.path.dirname(HERE))
+CORE = os.path.join(REPO, "code", "04_design_engine", "engine", "base", "core")
+AUD = os.path.join(REPO, "results", "audit", "audit_LNI"); LAB = os.path.join(REPO, "results", "forward_model_folds", "lab_effect")
+TAB = os.path.join(REPO, "results", "designs"); FIGIN = os.path.join(REPO, "results", "figure_inputs")
 plt.rcParams.update({"font.family": "Arial", "font.size": 9, "axes.linewidth": 0.6, "svg.fonttype": "none", "pdf.fonttype": 42,
                      "axes.spines.top": False, "axes.spines.right": False})
 BLUE, ORANGE, GREEN, DARK = "#4c78a8", "#e0a458", "#7aa35f", "#2b2b2b"
@@ -23,7 +23,7 @@ def save(fig, stem):
     plt.close(fig)
 
 
-F = json.load(open(os.path.join(HERE, "forward_evidence_v3.json"))); DJ = json.load(open(os.path.join(HERE, "designs_v3.json")))
+F = json.load(open(os.path.join(FIGIN, "forward_evidence_v3.json"))); DJ = json.load(open(os.path.join(FIGIN, "designs_v3.json")))
 CERT4 = ["S10_K8", "S14_K6", "S16_K10", "S20_K4"]; ALL6 = CERT4 + ["S18_K13", "S25_K13"]
 LABEL = {n: n.replace("S", "").replace("_K", "/") for n in ALL6}
 RUN = {n: f"{n}_R0.90" for n in ALL6}; SCAN = {n: f"{TAB}/{n}_global_scan.csv" for n in ALL6}; SCAN["S18_K13"] = f"{TAB}/S18_K13_FULLGRID_global_scan.csv"

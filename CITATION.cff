@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "If you use this software or data, please cite it as below."
+title: "Joint-reliability inverse design of low-cement pervious concrete: code, data and results"
+type: software
+version: 1.0.0
+license: MIT
+repository-code: "https://github.com/shuddhashil/pervious-concrete-joint-reliability"
+authors:
+  - family-names: Ghosh
+    given-names: Shuddhashil
+  - family-names: Singh
+    given-names: Priyansh
+keywords:
+  - Gaussian process
+  - surrogate model
+  - inverse design
+  - reliability-based design
+  - pervious concrete

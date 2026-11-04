@@ -13,10 +13,11 @@ sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import LCMGP_without_head as L
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+DATA = os.path.join(os.path.dirname(os.path.dirname(HERE)), "data")
 SF = MOD = HERE
 XLSX0 = None
-XLSX = os.path.join(HERE, "data_with_passing_sizes.xlsx")
-SPLITS = os.path.join(HERE, "splits_A3-1_remapped.json")  # A3-1: original fixed splits with the 19 removed rows dropped and indices remapped
+XLSX = os.path.join(DATA, "data_with_passing_sizes.xlsx")
+SPLITS = os.path.join(DATA, "splits_A3-1_remapped.json")  # A3-1: original fixed splits with the 19 removed rows dropped and indices remapped
 BINS = ['R25-19mm', 'R19-12.5mm', 'R12.5-9.5mm', 'R9.5-6.3mm', 'R6.3-4.75mm', 'R4.75-2.36mm']
 ASC = np.log2(np.array([2.36, 4.75, 6.3, 9.5, 12.5, 19.0, 25.0]))
 RECIPE = ['porosity', 'w/c', 'cem (kg/m3)', 'CA (kg/m3)', 'SP (kg/m3)', 'sand (kg/m3)']

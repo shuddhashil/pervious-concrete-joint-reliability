@@ -8,17 +8,20 @@ import dataclasses, json, math, sys
 from pathlib import Path
 import numpy as np, pandas as pd
 sys.dont_write_bytecode = True
-RES = Path(r"C:\Users\Shuddhashil\Desktop\Mix Design Paper Rebuild\research"); RT = RES / "RobustnessTests_20261021"
-sys.path.insert(0, str(RES / "CalibrationAudit_A3-1_20261005"))
+REPO = Path(__file__).resolve().parents[3]
+AUDIT_CODE = REPO / "code" / "03_validation_and_audit" / "audit_code"
+RESULTS = REPO / "results"
+LAB = RESULTS / "forward_model_folds" / "lab_effect"
+sys.path.insert(0, str(AUDIT_CODE))
 import heldout_porosity_conditional as P
-H = P.H; M = RT / "base_LNI" / "core" / "models"; H.MODELS = M; H.load_data.__defaults__ = (M,)
+H = P.H; M = REPO / "inputs" / "nested_audit" / "base_LNI" / "core" / "models"; H.MODELS = M; H.load_data.__defaults__ = (M,)
 HERE = Path(__file__).resolve().parent; MODE = sys.argv[1]
 
 
 def bank_source(j, h):
     """arrays (orig_row, muS, rawS, muQ, rawQ) for the records of group j, as seen from outer group h"""
     if MODE == "selftest":
-        f = RT / "colab_lab" / "out_lab" / f"labgrp_near3icm_split{j}.json"; d = json.load(open(f)); S, Q = d["y_std_raw_CS"], d["y_std_raw_logQ"]
+        f = LAB / f"labgrp_near3icm_split{j}.json"; d = json.load(open(f)); S, Q = d["y_std_raw_CS"], d["y_std_raw_logQ"]
     else:
         a, b = sorted((h, j)); d = json.load(open(Path(sys.argv[2]) / f"pair_{a}{b}_side{j}.json")); S, Q = d["y_std_icm_CS"], d["y_std_icm_logQ"]
     return np.asarray(d["original_row_index"], int), np.asarray(d["y_pred_CS"]), np.asarray(S), np.asarray(d["y_pred_logQ"]), np.asarray(Q)
@@ -49,9 +52,9 @@ m = H.metrics(pairs["P"].to_numpy(), pairs["O"].to_numpy()); ci = H.cluster_boot
 crit = {"C1a_slope_interval_overlaps_0.8_1.2": bool(ci["slope"]["lo95"] <= 1.2 and ci["slope"]["hi95"] >= 0.8), "C1b_accept_lower5_ge_0.85": bool(ci["accept_rate"]["lower5"] >= 0.85),
         "C1c_over_prediction_le_0.05": bool(m["accept_mean_predicted"] - m["accept_observed_rate"] <= 0.05)}
 res = dict(mode=MODE, metrics=m, accept_studies=int(acc.study.nunique()), cluster_bootstrap=ci, criteria=crit, bank_shift_by_fold=shifts)
-base = json.load(open(RT / "results" / "audit_LNI" / "calibration_summary.json"))["base_production"]; res["paper_audit"] = dict(metrics=base["metrics"], cluster_bootstrap=base["cluster_bootstrap"])
+base = json.load(open(RESULTS / "audit" / "audit_LNI" / "calibration_summary.json"))["base_production"]; res["paper_audit"] = dict(metrics=base["metrics"], cluster_bootstrap=base["cluster_bootstrap"])
 if MODE == "selftest":                                                      # control: must equal the paper's audit pair for pair
-    ref = pd.read_csv(RT / "results" / "audit_LNI" / "heldout_pass_probability_pairs_base_production.csv"); j = pairs.merge(ref, on=["row", "target_id"], suffixes=("", "_ref"))
+    ref = pd.read_csv(RESULTS / "audit" / "audit_LNI" / "heldout_pass_probability_pairs_base_production.csv"); j = pairs.merge(ref, on=["row", "target_id"], suffixes=("", "_ref"))
     res["selftest_max_abs_diff_P"] = float((j["P"] - j["P_ref"]).abs().max()); res["selftest_rows_matched"] = int(len(j)); res["selftest_rows_expected"] = int(len(ref))
 out = HERE / f"nested_audit_{MODE}.json"; json.dump(res, open(out, "w"), indent=1)
 pairs.to_csv(HERE / f"nested_audit_{MODE}_pairs.csv", index=False)

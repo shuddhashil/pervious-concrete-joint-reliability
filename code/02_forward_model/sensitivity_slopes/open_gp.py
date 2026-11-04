@@ -10,7 +10,8 @@ import copy, json, os, sys
 import numpy as np, pandas as pd, torch
 
 HERE = os.path.dirname(os.path.abspath(__file__))
-CORE = r"C:\Users\Shuddhashil\Desktop\Mix Design Paper Rebuild\research\RobustEngine_20261022\GuidedEngine_20261003\base\core"   # 2026-10-22: deployed laboratory-effect engine
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+CORE = os.path.join(REPO, "code", "04_design_engine", "engine", "base", "core")   # 2026-10-22: deployed laboratory-effect engine
 sys.path.insert(0, os.path.join(CORE, "frozen", "forward_model")); sys.path.insert(0, os.path.join(CORE, "src"))
 import LCMGP_without_head as L  # noqa: E402
 import a3_contract as A3C  # noqa: E402

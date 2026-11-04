@@ -2,7 +2,7 @@
 (same set-up as run_target.py stage 0). Resumable: a target whose output json exists is skipped.
 usage: python driver.py [smoke_n]   (smoke_n: score only n candidates of the first target, to check the set-up)"""
 import os, sys, subprocess
-ROOT = os.environ.get("GENGINE_ROOT", "/content/GuidedEngine_20261003"); J = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, ROOT); sys.dont_write_bytecode = True
+J = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(J)); ROOT = os.environ.get("GENGINE_ROOT", os.path.join(REPO, "code", "04_design_engine", "engine")); sys.path.insert(0, ROOT); sys.dont_write_bytecode = True
 from gengine import target as TG
 TARGETS = [(10, 8), (14, 6), (16, 10), (20, 4), (18, 13), (25, 13)]
 smoke = sys.argv[1] if len(sys.argv) > 1 else None

@@ -2,17 +2,19 @@
 newlab = unseen lab, no data from it; near3 = conditioned (hyperparameters fixed) on the 3 other mixtures of the same source nearest in standardised input space.
 usage: python -I predict_book1.py  (reads book1_inputs.csv; writes pred_book1.csv, out_book1.json)"""
 import sys, os, json
-KIT = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_kit"
+HERE = os.path.dirname(os.path.abspath(__file__))
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(HERE)))
+KIT = os.path.join(REPO, "code", "02_forward_model")
+DATA = os.path.join(REPO, "data", "outside_studies")
 sys.path.insert(0, KIT); sys.dont_write_bytecode = True
 import numpy as np, pandas as pd, torch
 import robust_fits as RF
 import lab_fits as LF
 R, L = RF.R, RF.L
-HERE = os.path.dirname(os.path.abspath(__file__))
-CK = torch.load("C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/RobustnessTests_20261021/colab_lab/out_lab/fulldata_Q5a3_lab.pt", weights_only=False)
+CK = torch.load(os.path.join(REPO, "results", "forward_model_folds", "lab_effect", "fulldata_Q5a3_lab.pt"), weights_only=False)
 RF.frame()
 assert list(CK["features"]) == list(L.FEATURES)
-D = pd.read_csv(os.path.join(HERE, "book1_inputs.csv"))
+D = pd.read_csv(os.path.join(DATA, "book1_inputs.csv"))
 Xraw = D[["porosity", "wc", "cem", "CA", "SP", "sand", "q10", "q25", "q50", "q75", "q90"]].copy()
 Xraw.columns = ["porosity", "w/c", "cem (kg/m3)", "CA (kg/m3)", "SP (kg/m3)", "sand (kg/m3)", "q10", "q25", "q50", "q75", "q90"]
 Xm = L._apply_feature_transforms(Xraw[L.FEATURES]).to_numpy(float)

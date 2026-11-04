@@ -5,7 +5,8 @@ usage: python recert_variant.py <variant_base_dir> <S> <K> <design_json> <out_js
 import os, sys, json, shutil, hashlib
 vb, S, K, dj, out_json = sys.argv[1], float(sys.argv[2]), float(sys.argv[3]), sys.argv[4], sys.argv[5]
 SDS = tuple(float(x) for x in sys.argv[6:]) or (1.5,)
-GE = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research/GuidedEngine_20261003"
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+GE = os.path.join(REPO, "code", "04_design_engine", "engine")
 work = os.path.join(os.path.dirname(os.path.abspath(out_json)), "_work", os.path.basename(out_json)[:-5])
 if not os.path.exists(os.path.join(work, "core")):
     ign = shutil.ignore_patterns("__pycache__", "*.pyc")

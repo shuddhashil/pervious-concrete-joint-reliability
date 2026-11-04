@@ -1,0 +1,23 @@
+{
+ "method": "paired_max_score",
+ "scope": "pooled_oos_A3_11D_variant_LNI",
+ "independent_validation_estimate": false,
+ "scales": "production effective (max(raw,local10,same-row-excluded) x ADinfl)",
+ "levels": {
+  "0.8": {
+   "q": 0.7162912603228739,
+   "k": 506,
+   "n_cal": 631
+  },
+  "0.9": {
+   "q": 1.141022083154792,
+   "k": 569,
+   "n_cal": 631
+  },
+  "0.95": {
+   "q": 1.4513191624979456,
+   "k": 601,
+   "n_cal": 631
+  }
+ }
+}

@@ -1,0 +1,300 @@
+{
+ "calibration": {
+  "conformal_note": "split-conformal on CAL density values; finite-sample correction ceil((n+1)*alpha)/n; marginal validity only, never pointwise conditional guarantee",
+  "fit_cal_split": "grouped 85/15 GroupShuffleSplit of outer-train; density fit on FIT only, thresholds on CAL only; NO refit on full outer-train (documented efficiency choice)",
+  "levels": [
+   0.8,
+   0.9,
+   0.95
+  ],
+  "primary_level": 0.9
+ },
+ "cv": {
+  "historical_seal": "C267/ID-80/ID-90 recipes extracted from Stage-16 artifacts ONLY AFTER method_freeze.json exists, into candidates_sealed.json; selection code must not reference them",
+  "inner": "GroupKFold(3) inside FIT-subset; hyperparameters by grouped held-out mean log-score",
+  "outer": "grouped 5-fold by nominal recipe group, 3 deterministic repeats = 15 outer folds",
+  "outer_seeds": [
+   20260921,
+   20260922,
+   20260923
+  ]
+ },
+ "data": {
+  "authoritative_csv": "materials/data/reconciled_phase2v/phase1_reconciled_eligible.csv",
+  "authoritative_xlsx": "materials/data/reconciled_phase2v/phase1_reconciled_eligible.xlsx",
+  "bins": [
+   "R25-19mm",
+   "R19-12.5mm",
+   "R12.5-9.5mm",
+   "R9.5-6.3mm",
+   "R6.3-4.75mm",
+   "R4.75-2.36mm"
+  ],
+  "granularity_note": "bin fractions f_j = bin_pct/100 sum to 1; bin masses b_j = CA * f_j sum back to CA",
+  "loader": "self-contained copy of Stage-14/16 loader logic; read-only, upstream untouched",
+  "n_usable": 650
+ },
+ "decision_categories": [
+  "DIRECT_LOCAL_POROSITY_SUPPORT_SUPPORTED",
+  "DIRECT_LOCAL_POROSITY_SUPPORT_WEAK",
+  "DIRECT_LOCAL_POROSITY_SUPPORT_NOT_SUPPORTED"
+ ],
+ "decoys": {
+  "label": "NON-GROUND-TRUTH conditional-discrimination diagnostic; never 'impossible mixtures'",
+  "shifts_pp": [
+   5,
+   8
+  ],
+  "source": "deterministic +/-5pp and +/-8pp shifts of each held-out row's own observed phi, clipped to phi grid"
+ },
+ "density_floor": 1e-12,
+ "experiment": "Stage17_Direct_Local_Recipe_Porosity_Support_20260918",
+ "forbidden_columns": [
+  "compressive strength",
+  "permeability",
+  "performance targets",
+  "optimizer objectives",
+  "historical pass/fail outcomes",
+  "C267/ID-80/ID-90 survival"
+ ],
+ "forbidden_methods": [
+  "CatBoost porosity regression",
+  "random forest / XGBoost / LightGBM porosity regression",
+  "neural-network porosity regression",
+  "GP porosity point predictor",
+  "mediated/hierarchical porosity model",
+  "any predict-phi-hat-plus-minus-error model"
+ ],
+ "grids": {
+  "B0_bw_scale": [
+   0.5,
+   0.75,
+   1.0,
+   1.5
+  ],
+  "B1_k": [
+   10,
+   15,
+   25,
+   40,
+   60,
+   100,
+   150
+  ],
+  "B2_k": [
+   10,
+   15,
+   25,
+   40,
+   60,
+   100,
+   150
+  ],
+  "B2_phi_bw": [
+   0.75,
+   1.25,
+   2.0,
+   3.0,
+   4.5
+  ],
+  "B3_k": [
+   10,
+   15,
+   25,
+   40,
+   60,
+   100,
+   150
+  ],
+  "B3_phi_bw": [
+   0.75,
+   1.25,
+   2.0,
+   3.0,
+   4.5
+  ],
+  "B4_adaptive_k": [
+   25,
+   50,
+   100
+  ],
+  "B4_adaptive_scale": [
+   0.75,
+   1.0,
+   1.5
+  ],
+  "B4_fixed_recipe_bw": [
+   0.5,
+   1.0,
+   2.0,
+   4.0,
+   8.0
+  ],
+  "B4_phi_bw": [
+   0.75,
+   1.5,
+   2.5,
+   4.0
+  ],
+  "B5_joint_bw": [
+   0.3,
+   0.4,
+   0.5,
+   0.75,
+   1.0,
+   1.5,
+   2.0
+  ],
+  "B6_K": [
+   1,
+   2,
+   3,
+   4,
+   6,
+   8
+  ],
+  "B6_covariance": "full",
+  "B6_reg_covar": 0.001,
+  "B7_k": [
+   30,
+   50,
+   80,
+   120
+  ],
+  "B7_local_K": [
+   1,
+   2,
+   3
+  ],
+  "B7_min_n_per_mode": 15,
+  "B8_members": [
+   "B2",
+   "B3",
+   "B4",
+   "B5",
+   "B6",
+   "B7"
+  ],
+  "B8_rule": "simplex weights maximizing pooled inner-OOF log-score; REJECT ensemble if no OOF improvement over best constituent",
+  "S1_gamma": [
+   "scale/10",
+   "scale",
+   "scale*10"
+  ],
+  "S1_nu": [
+   0.05,
+   0.1,
+   0.2
+  ],
+  "S2_contamination": [
+   0.05,
+   0.1,
+   0.2
+  ],
+  "S2_max_samples": [
+   0.5,
+   1.0
+  ],
+  "S3_k": [
+   20,
+   50,
+   100
+  ]
+ },
+ "grouping": {
+  "key": "pre-casting only: cem, water, CA, sand, SP, b1..b6",
+  "method": "exact rounded key (4 decimals) then complete-linkage merge, diameter bounded by 0.1 std units; no single-linkage chaining",
+  "rule": "nominal recipe groups never cross outer folds, inner folds, or FIT/CAL splits; group-excluded neighbor search everywhere"
+ },
+ "historical": {
+  "cases": [
+   "C267 (phi_target ~= 27.33%)",
+   "ID-80 (phi_target = 28%)",
+   "ID-90 (phi_target = 25%)",
+   "20 randomly selected ordinary recipe groups (seed 777)"
+  ],
+  "timing": "ONLY after method_freeze.json exists"
+ },
+ "methods_primary": [
+  "B0",
+  "B1",
+  "B2",
+  "B3",
+  "B4",
+  "B5",
+  "B6",
+  "B7",
+  "B8"
+ ],
+ "methods_secondary": [
+  "S1",
+  "S2",
+  "S3"
+ ],
+ "prohibitions": [
+  "no CS/perm in support code",
+  "no point-predictor porosity models",
+  "no LOSO campaign or LOSO gate",
+  "no optimizer work",
+  "no overwrite of upstream files",
+  "no tuning by region width",
+  "no min/max convexification of HDRs"
+ ],
+ "question": "For a proposed pre-casting recipe/gradation x, can we define from observed literature data a defensible local set of hardened-porosity values phi empirically supported for recipes like x, so an inverse optimizer may choose only recipe-porosity states inside that set?",
+ "recipe_gate": {
+  "calibration": "grouped 5-fold CV inside FIT-subset: pooled held-out kth-NN distances; threshold = 95th percentile",
+  "k": 10,
+  "response": "NO_LOCAL_EVIDENCE_FOR_RECIPE, no porosity HDR emitted",
+  "uses": "x only, never phi"
+ },
+ "representations": {
+  "primary": {
+   "cols": [
+    "w/c",
+    "cem",
+    "SP",
+    "sand",
+    "b1",
+    "b2",
+    "b3",
+    "b4",
+    "b5",
+    "b6"
+   ],
+   "name": "x_raw (raw bin masses; CA excluded since bins sum to CA)",
+   "transform": "log cem; log1p SP/sand/b1..b6; raw w/c; StandardScaler fit on FIT-subset only"
+  },
+  "sensitivity": {
+   "cols": [
+    "w/c",
+    "cem (kg/m3)",
+    "CA (kg/m3)",
+    "SP (kg/m3)",
+    "sand (kg/m3)",
+    "WAS",
+    "I_gap",
+    "Cu",
+    "Aag(mm^-1)"
+   ],
+   "name": "x9 descriptors (Stage-15 authoritative transformed values)",
+   "transform": "Stage-15: log cem/CA/Cu; log1p SP/sand/Aag; raw w/c/WAS/I_gap"
+  }
+ },
+ "selection_rule_lexicographic": [
+  "1. proper density quality: competitive grouped held-out CDE/log-score (B8 needs OOF gain over best member)",
+  "2. calibration: 80/90/95 HDR coverage tracks nominal; severe systematic undercoverage disqualifies",
+  "3. stability: no collapse across grouped folds or small hyperparameter perturbations",
+  "4. local evidence integrity: not routinely dominated by one study; adequate effective local N",
+  "5. conditional information gain: materially differs from global B0 where recipe info is informative",
+  "6. region measure ONLY as tie-break among statistically comparable methods",
+  "7. interpretability/auditability tie-break"
+ ],
+ "study_weight_sensitivity": "row weighting primary for fitting; equal-study-weight evaluation metrics for all methods; study-weighted refit of SELECTED method only; local-neighborhood study-contribution diagnostics",
+ "support_grid": {
+  "range": "global observed phi rounded outward to 0.1 (dataset constant, computed once)",
+  "step_pp": 0.1,
+  "units": "porosity percentage points"
+ },
+ "tuning_criterion": "grouped held-out conditional mean log-score (primary); CDE-loss proxy + CRPS secondary; region width NEVER an optimization target",
+ "wording": "EMPIRICAL LOCAL STATE SUPPORT only. Never attainable/achievable/physically feasible. HDR = smallest high-density probability region under the estimated conditional density; disconnected sets preserved."
+}

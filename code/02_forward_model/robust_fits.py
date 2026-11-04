@@ -9,6 +9,7 @@ usage: python robust_fits.py all | check | grouped K | noli_full | noli K | summ
 Outputs (resumable; finished fits are skipped): out/<job>.json (+ out/fulldata_Q5a3_noli.pt)."""
 import json, os, sys, time
 HERE = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, HERE); sys.dont_write_bytecode = True
+DATA = os.path.join(os.path.dirname(os.path.dirname(HERE)), "data")
 import numpy as np, pandas as pd, torch
 import retrain as R
 L = R.L
@@ -29,7 +30,7 @@ def frame():
 
 
 def grouped_splits(st):
-    p = os.path.join(HERE, "splits_grouped5.json")
+    p = os.path.join(DATA, "splits_grouped5.json")
     if os.path.exists(p): return json.load(open(p))
     names, counts = np.unique(st, return_counts=True); order = np.argsort(-counts, kind="stable"); load = np.zeros(5); fold = {}
     for i in order: k = int(np.argmin(load)); fold[names[i]] = k; load[k] += counts[i]

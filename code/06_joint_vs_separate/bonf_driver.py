@@ -1,7 +1,7 @@
 """Runs bonf_eval.py for the four supported targets (same per-target set-up as driver.py). Resumable.
 usage: python bonf_driver.py <results_dir_of_sep_eval>"""
 import os, sys, subprocess
-ROOT = os.environ.get("GENGINE_ROOT", "/content/GuidedEngine_20261003"); J = os.path.dirname(os.path.abspath(__file__)); sys.path.insert(0, ROOT); sys.dont_write_bytecode = True
+J = os.path.dirname(os.path.abspath(__file__)); REPO = os.path.dirname(os.path.dirname(J)); ROOT = os.environ.get("GENGINE_ROOT", os.path.join(REPO, "code", "04_design_engine", "engine")); sys.path.insert(0, ROOT); sys.dont_write_bytecode = True
 from gengine import target as TG
 RES = sys.argv[1]; os.makedirs(f"{J}/out_bonf", exist_ok=True)
 for S, K in [(10, 8), (14, 6), (16, 10), (20, 4)]:

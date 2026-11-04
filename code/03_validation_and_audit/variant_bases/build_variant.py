@@ -7,14 +7,15 @@ usage: python build_variant.py G|N <variant_dir (copy of GuidedEngine base)> <co
 import os, sys, json, hashlib, time
 import numpy as np, pandas as pd, torch
 MODE, VB, FO = sys.argv[1], os.path.abspath(sys.argv[2]), os.path.abspath(sys.argv[3]); T = os.path.join(VB, "core")
-RES = "C:/Users/Shuddhashil/Desktop/Mix Design Paper Rebuild/research"; LCM = RES + "/LCMGP_Retrain_A3-1_20261003"; GE = RES + "/GuidedEngine_20261003"
-INP = os.path.join(GE, "stages", "00_base", "inputs_A3-1"); CSV = os.path.join(INP, "data_with_passing_sizes_A3-1.csv")
+REPO = os.path.dirname(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+LCM = os.path.join(REPO, "inputs", "build_variant"); GE = os.path.join(REPO, "code", "04_design_engine", "engine")
+INP = os.path.join(GE, "base", "core", "data_inputs"); CSV = os.path.join(INP, "data_with_passing_sizes_A3-1.csv")
 COH = pd.read_csv(os.path.join(INP, "phase1_reconciled_eligible.csv")); LI = "data source - new - li 2021"
 sys.path.insert(0, os.path.join(T, "frozen", "forward_model"))
 import LCMGP_without_head as L
 import a3_contract as A
 A.install(L)
-MOD = os.path.join(T, "models"); TAB = os.path.join(T, "tables"); XLSX = os.path.join(LCM, "data_with_passing_sizes.xlsx")
+MOD = os.path.join(T, "models"); TAB = os.path.join(T, "tables"); XLSX = os.path.join(REPO, "data", "data_with_passing_sizes.xlsx")
 pd.read_excel = lambda path, *a, **k: pd.read_csv(CSV)
 t0 = time.time(); REP = {"mode": MODE}
 sha = lambda p: hashlib.sha256(open(p, "rb").read()).hexdigest()
